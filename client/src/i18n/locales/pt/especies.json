@@ -1,0 +1,16 @@
+{
+  "title": "Minha coleção",
+  "progress": "{{found}} de {{total}} espécies descobertas",
+  "locked": "Por descobrir",
+  "discovered": "Descoberta",
+  "habitat": "Habitat",
+  "feeding": "Alimentação",
+  "facts": "Curiosidades",
+  "ecology": "Importância ecológica",
+  "identifyTitle": "Identifique uma espécie",
+  "upload": "Enviar foto",
+  "camera": "Tirar foto",
+  "sound": "Escolher som",
+  "analyzing": "Analisando...",
+  "confidence": "Confiança"
+}

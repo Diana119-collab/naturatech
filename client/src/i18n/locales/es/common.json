@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "destinos": "Destinos",
+    "explorar": "Explorar",
+    "especies": "Colección",
+    "ia": "Natura AI",
+    "certificado": "Certificado",
+    "admin": "Admin"
+  },
+  "explorer": {
+    "id": "NaturaTech ID",
+    "level": "Nivel",
+    "points": "puntos"
+  },
+  "actions": {
+    "start": "Comenzar exploración",
+    "continue": "Continuar",
+    "back": "Volver",
+    "close": "Cerrar",
+    "confirm": "Confirmar descubrimiento",
+    "download": "Descargar certificado",
+    "speak": "Leer en voz alta",
+    "reset": "Reiniciar progreso"
+  },
+  "a11y": {
+    "title": "Modo inclusivo",
+    "voice": "Lectura por voz",
+    "largeText": "Texto grande",
+    "highContrast": "Alto contraste",
+    "simpleLanguage": "Lenguaje simple"
+  },
+  "demo": "Modo demo — datos en local"
+}

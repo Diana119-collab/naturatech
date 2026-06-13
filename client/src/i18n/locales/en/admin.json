@@ -1,0 +1,16 @@
+{
+  "login": "Sign in",
+  "username": "Username",
+  "password": "Password",
+  "dashboard": "Admin dashboard",
+  "stats": "Statistics",
+  "visitors": "Visitors",
+  "discoveries": "Species discovered",
+  "popularDestinos": "Popular destinations",
+  "popularSpecies": "Most viewed species",
+  "manageDestinos": "Manage destinations",
+  "logout": "Sign out",
+  "edit": "Edit",
+  "save": "Save",
+  "delete": "Delete"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "naturatech",
+  "private": true,
+  "version": "1.0.0",
+  "description": "NaturaTech - Plataforma de turismo de aves y bird watching",
+  "scripts": {
+    "dev": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "preview": "npm run preview --prefix client",
+    "install:all": "npm install --prefix client"
+  }
+}

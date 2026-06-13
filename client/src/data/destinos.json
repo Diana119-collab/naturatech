@@ -1,0 +1,387 @@
+[
+  {
+    "id": "dest-arenilla",
+    "slug": "la-arenilla",
+    "nombre": {
+      "es": "La Arenilla",
+      "en": "La Arenilla",
+      "pt": "La Arenilla"
+    },
+    "descripcion": {
+      "es": "Humedal costero en el sur de Lima, refugio de aves migratorias y residentes. Un ecosistema vital para la biodiversidad marina y terrestre del Perú.",
+      "en": "Coastal wetland in southern Lima, a refuge for migratory and resident birds. A vital ecosystem for Peru's marine and terrestrial biodiversity.",
+      "pt": "Pantanal costeiro ao sul de Lima, refúgio de aves migratórias e residentes. Um ecossistema vital para a biodiversidade marinha e terrestre do Peru."
+    },
+    "ubicacion": { "lat": -12.078, "lng": -77.134 },
+    "imagen": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+    "ecosistema": {
+      "es": "Humedal costero",
+      "en": "Coastal wetland",
+      "pt": "Pantanal costeiro"
+    },
+    "especialidad": {
+      "es": "Aves acuáticas y migratorias",
+      "en": "Waterfowl and migratory birds",
+      "pt": "Aves aquáticas e migratórias"
+    },
+    "preview": false,
+    "zonas": [
+      {
+        "id": "zona-humedal",
+        "nombre": { "es": "Humedal", "en": "Wetland", "pt": "Pantanal" },
+        "emoji": "🌿",
+        "coords": [-12.079, -77.135],
+        "especiesRequeridas": ["garza-blanca"],
+        "orden": 1
+      },
+      {
+        "id": "zona-orilla",
+        "nombre": { "es": "Orilla", "en": "Shore", "pt": "Orla" },
+        "emoji": "🌊",
+        "coords": [-12.077, -77.133],
+        "especiesRequeridas": ["pelicano-peruano"],
+        "orden": 2
+      },
+      {
+        "id": "zona-mirador",
+        "nombre": { "es": "Mirador", "en": "Viewpoint", "pt": "Mirante" },
+        "emoji": "🔭",
+        "coords": [-12.076, -77.136],
+        "especiesRequeridas": ["cormoran"],
+        "orden": 3
+      }
+    ],
+    "especies": [
+      {
+        "id": "garza-blanca",
+        "nombre": { "es": "Garza blanca", "en": "Great egret", "pt": "Garça-branca-grande" },
+        "imagen": "https://images.unsplash.com/photo-1552728083-57bdde30ebb3?w=400&q=80",
+        "silueta": "🦢",
+        "sonido": "garza",
+        "habitat": {
+          "es": "Humedales, lagunas y ríos de poca profundidad",
+          "en": "Wetlands, lagoons and shallow rivers",
+          "pt": "Pantanals, lagoas e rios rasos"
+        },
+        "alimentacion": {
+          "es": "Peces, anfibios, insectos y pequeños reptiles",
+          "en": "Fish, amphibians, insects and small reptiles",
+          "pt": "Peixes, anfíbios, insetos e pequenos répteis"
+        },
+        "curiosidades": {
+          "es": "Puede permanecer inmóvil durante largos periodos esperando a su presa. Su plumaje blanco brillante la hace visible desde lejos.",
+          "en": "Can remain motionless for long periods waiting for prey. Its bright white plumage makes it visible from afar.",
+          "pt": "Pode permanecer imóvel por longos períodos esperando a presa. Sua plumagem branca brilhante a torna visível de longe."
+        },
+        "importanciaEcologica": {
+          "es": "Indicador de salud del humedal. Controla poblaciones de peces e insectos.",
+          "en": "Indicator of wetland health. Controls fish and insect populations.",
+          "pt": "Indicador de saúde do pantanal. Controla populações de peixes e insetos."
+        },
+        "zonaId": "zona-humedal"
+      },
+      {
+        "id": "pelicano-peruano",
+        "nombre": { "es": "Pelícano peruano", "en": "Peruvian pelican", "pt": "Pelicano peruano" },
+        "imagen": "https://images.unsplash.com/photo-1548191265-ccf9d9139455?w=400&q=80",
+        "silueta": "🐦",
+        "sonido": "pelicano",
+        "habitat": {
+          "es": "Costas del Pacífico suramericano, especialmente Perú y Chile",
+          "en": "Coasts of the South Pacific, especially Peru and Chile",
+          "pt": "Costas do Pacífico sul-americano, especialmente Peru e Chile"
+        },
+        "alimentacion": {
+          "es": "Pescado y crustáceos, capturados con su gran pico",
+          "en": "Fish and crustaceans, caught with its large beak",
+          "pt": "Peixes e crustáceos, capturados com seu grande bico"
+        },
+        "curiosidades": {
+          "es": "Endémico del Pacífico sur. Su bolsa gular puede almacenar hasta 13 litros de agua y pescado.",
+          "en": "Endemic to the South Pacific. Its gular pouch can store up to 13 liters of water and fish.",
+          "pt": "Endêmico do Pacífico sul. Sua bolsa gular pode armazenar até 13 litros de água e peixe."
+        },
+        "importanciaEcologica": {
+          "es": "Especie bandera del litoral peruano. Su presencia indica abundancia de anchoveta.",
+          "en": "Flagship species of the Peruvian coast. Its presence indicates anchovy abundance.",
+          "pt": "Espécie bandeira do litoral peruano. Sua presença indica abundância de anchova."
+        },
+        "zonaId": "zona-orilla"
+      },
+      {
+        "id": "cormoran",
+        "nombre": { "es": "Cormorán guanay", "en": "Guanay cormorant", "pt": "Corvo-marinho de Guanay" },
+        "imagen": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&q=80",
+        "silueta": "🐦‍⬛",
+        "sonido": "cormoran",
+        "habitat": {
+          "es": "Islas y costas rocosas del Pacífico peruano",
+          "en": "Islands and rocky coasts of the Peruvian Pacific",
+          "pt": "Ilhas e costas rochosas do Pacífico peruano"
+        },
+        "alimentacion": {
+          "es": "Peces pelágicos, principalmente anchoveta",
+          "en": "Pelagic fish, mainly anchovy",
+          "pt": "Peixes pelágicos, principalmente anchova"
+        },
+        "curiosidades": {
+          "es": "Excelente buceador que puede sumergirse hasta 30 metros. Se seca las alas extendiéndolas al sol.",
+          "en": "Excellent diver that can submerge up to 30 meters. Dries its wings by spreading them in the sun.",
+          "pt": "Excelente mergulhador que pode submergir até 30 metros. Seca as asas estendendo-as ao sol."
+        },
+        "importanciaEcologica": {
+          "es": "Productor de guano, fundamental para la agricultura peruana histórica.",
+          "en": "Guano producer, fundamental for historical Peruvian agriculture.",
+          "pt": "Produtor de guano, fundamental para a agricultura peruana histórica."
+        },
+        "zonaId": "zona-mirador"
+      },
+      {
+        "id": "gaviota",
+        "nombre": { "es": "Gaviota dominicana", "en": "Dominican gull", "pt": "Gaivota dominicana" },
+        "imagen": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&q=80",
+        "silueta": "🕊️",
+        "sonido": "gaviota",
+        "habitat": {
+          "es": "Playas, puertos y zonas costeras urbanas del Pacífico",
+          "en": "Beaches, ports and urban coastal areas of the Pacific",
+          "pt": "Praias, portos e zonas costeiras urbanas do Pacífico"
+        },
+        "alimentacion": {
+          "es": "Omnívora: pescado, restos orgánicos, crustáceos",
+          "en": "Omnivorous: fish, organic waste, crustaceans",
+          "pt": "Onívora: peixe, restos orgânicos, crustáceos"
+        },
+        "curiosidades": {
+          "es": "Muy adaptada a entornos urbanos. Puede vivir más de 20 años.",
+          "en": "Highly adapted to urban environments. Can live over 20 years.",
+          "pt": "Muito adaptada a ambientes urbanos. Pode viver mais de 20 anos."
+        },
+        "importanciaEcologica": {
+          "es": "Carroñera costera que ayuda a reciclar materia orgánica en playas.",
+          "en": "Coastal scavenger that helps recycle organic matter on beaches.",
+          "pt": "Carniceira costeira que ajuda a reciclar matéria orgânica nas praias."
+        },
+        "zonaId": "zona-orilla"
+      },
+      {
+        "id": "playerito",
+        "nombre": { "es": "Playerito semipalmado", "en": "Semipalmated sandpiper", "pt": "Maçarico-semipalmado" },
+        "imagen": "https://images.unsplash.com/photo-1516541195162-9ebb7a0d4f34?w=400&q=80",
+        "silueta": "🐤",
+        "sonido": "playerito",
+        "habitat": {
+          "es": "Playas lodosas y humedales costeros durante migración",
+          "en": "Muddy beaches and coastal wetlands during migration",
+          "pt": "Praias lamacentas e pantanais costeiros durante migração"
+        },
+        "alimentacion": {
+          "es": "Invertebrados del sedimento: gusanos, crustáceos pequeños",
+          "en": "Sediment invertebrates: worms, small crustaceans",
+          "pt": "Invertebrados do sedimento: vermes, pequenos crustáceos"
+        },
+        "curiosidades": {
+          "es": "Migra desde el Ártico hasta Sudamérica. Pesa apenas 20 gramos pero recorre miles de kilómetros.",
+          "en": "Migrates from the Arctic to South America. Weighs only 20 grams but travels thousands of kilometers.",
+          "pt": "Migra do Ártico até a América do Sul. Pesa apenas 20 gramas mas percorre milhares de quilômetros."
+        },
+        "importanciaEcologica": {
+          "es": "Conecta ecosistemas del hemisferio norte y sur. Indicador de calidad de playas.",
+          "en": "Connects ecosystems of the northern and southern hemispheres. Beach quality indicator.",
+          "pt": "Conecta ecossistemas do hemisfério norte e sul. Indicador de qualidade das praias."
+        },
+        "zonaId": "zona-humedal"
+      }
+    ]
+  },
+  {
+    "id": "dest-cocachimba",
+    "slug": "cocachimba",
+    "nombre": {
+      "es": "Cocachimba",
+      "en": "Cocachimba",
+      "pt": "Cocachimba"
+    },
+    "descripcion": {
+      "es": "Bosque nublado de Amazonas, hogar del Gocta y de colibríes espectaculares.",
+      "en": "Cloud forest in Amazonas, home to Gocta waterfall and spectacular hummingbirds.",
+      "pt": "Floresta nublada em Amazonas, lar da cachoeira Gocta e de beija-flores espetaculares."
+    },
+    "ubicacion": { "lat": -5.933, "lng": -77.883 },
+    "imagen": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80",
+    "ecosistema": {
+      "es": "Bosque nublado",
+      "en": "Cloud forest",
+      "pt": "Floresta nublada"
+    },
+    "especialidad": {
+      "es": "Colibríes",
+      "en": "Hummingbirds",
+      "pt": "Beija-flores"
+    },
+    "preview": true,
+    "zonas": [
+      {
+        "id": "zona-bosque-coca",
+        "nombre": { "es": "Bosque", "en": "Forest", "pt": "Floresta" },
+        "emoji": "🌳",
+        "coords": [-5.934, -77.884],
+        "especiesRequeridas": ["colibri-marvelous"],
+        "orden": 1
+      }
+    ],
+    "especies": [
+      {
+        "id": "colibri-marvelous",
+        "nombre": { "es": "Colibrí maravilloso", "en": "Marvelous spatuletail", "pt": "Beija-flor maravilhoso" },
+        "imagen": "https://images.unsplash.com/photo-1552728083-57bdde30ebb3?w=400&q=80",
+        "silueta": "🐦",
+        "sonido": "colibri",
+        "habitat": {
+          "es": "Bosques nublados del norte de Perú, 2100-2900 msnm",
+          "en": "Cloud forests of northern Peru, 2100-2900 masl",
+          "pt": "Florestas nubladas do norte do Peru, 2100-2900 msnm"
+        },
+        "alimentacion": {
+          "es": "Néctar de flores y pequeños insectos",
+          "en": "Flower nectar and small insects",
+          "pt": "Néctar de flores e pequenos insetos"
+        },
+        "curiosidades": {
+          "es": "El colibrí con la cola más extravagante del mundo. Endémico de Utcubamba.",
+          "en": "The hummingbird with the most extravagant tail in the world. Endemic to Utcubamba.",
+          "pt": "O beija-flor com a cauda mais extravagante do mundo. Endêmico de Utcubamba."
+        },
+        "importanciaEcologica": {
+          "es": "Polinizador clave del bosque nublado. Especie emblemática para el ecoturismo.",
+          "en": "Key pollinator of the cloud forest. Emblematic species for ecotourism.",
+          "pt": "Polinizador chave da floresta nublada. Espécie emblemática para ecoturismo."
+        },
+        "zonaId": "zona-bosque-coca"
+      },
+      {
+        "id": "colibri-emeralda",
+        "nombre": { "es": "Colibrí esmeralda", "en": "Emerald hummingbird", "pt": "Beija-flor esmeralda" },
+        "imagen": "https://images.unsplash.com/photo-1444464666168-49d633b86797?w=400&q=80",
+        "silueta": "🐦",
+        "sonido": "colibri",
+        "habitat": {
+          "es": "Claros del bosque y jardines de montaña",
+          "en": "Forest clearings and mountain gardens",
+          "pt": "Clareiras da floresta e jardins de montanha"
+        },
+        "alimentacion": {
+          "es": "Néctar de orquídeas y bromelias",
+          "en": "Orchid and bromeliad nectar",
+          "pt": "Néctar de orquídeas e bromélias"
+        },
+        "curiosidades": {
+          "es": "Sus plumajes iridiscentes cambian de color según el ángulo de la luz.",
+          "en": "Its iridescent plumage changes color depending on the angle of light.",
+          "pt": "Suas plumagens iridescentes mudam de cor conforme o ângulo da luz."
+        },
+        "importanciaEcologica": {
+          "es": "Polinizador especializado de orquídeas endémicas.",
+          "en": "Specialized pollinator of endemic orchids.",
+          "pt": "Polinizador especializado de orquídeas endêmicas."
+        },
+        "zonaId": "zona-bosque-coca"
+      }
+    ]
+  },
+  {
+    "id": "dest-pantanos",
+    "slug": "pantanos-de-villa",
+    "nombre": {
+      "es": "Pantanos de Villa",
+      "en": "Villa Wetlands",
+      "pt": "Pantanal de Villa"
+    },
+    "descripcion": {
+      "es": "Reserva ecológica urbana en Lima, santuario de aves migratorias del hemisferio sur.",
+      "en": "Urban ecological reserve in Lima, sanctuary for migratory birds of the southern hemisphere.",
+      "pt": "Reserva ecológica urbana em Lima, santuário de aves migratórias do hemisfério sul."
+    },
+    "ubicacion": { "lat": -12.213, "lng": -76.987 },
+    "imagen": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+    "ecosistema": {
+      "es": "Humedal",
+      "en": "Wetland",
+      "pt": "Pantanal"
+    },
+    "especialidad": {
+      "es": "Aves migratorias",
+      "en": "Migratory birds",
+      "pt": "Aves migratórias"
+    },
+    "preview": true,
+    "zonas": [
+      {
+        "id": "zona-laguna",
+        "nombre": { "es": "Laguna", "en": "Lagoon", "pt": "Lagoa" },
+        "emoji": "💧",
+        "coords": [-12.214, -76.988],
+        "especiesRequeridas": ["flamenco-chileno"],
+        "orden": 1
+      }
+    ],
+    "especies": [
+      {
+        "id": "flamenco-chileno",
+        "nombre": { "es": "Flamenco chileno", "en": "Chilean flamingo", "pt": "Flamingo chileno" },
+        "imagen": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&q=80",
+        "silueta": "🦩",
+        "sonido": "flamenco",
+        "habitat": {
+          "es": "Lagunas salobres y pantanos de la costa sur",
+          "en": "Salt lagoons and coastal marshes of the south coast",
+          "pt": "Lagoas salobras e pântanos da costa sul"
+        },
+        "alimentacion": {
+          "es": "Algas, crustáceos y larvas filtrados del agua",
+          "en": "Algae, crustaceans and larvae filtered from water",
+          "pt": "Algas, crustáceos e larvas filtrados da água"
+        },
+        "curiosidades": {
+          "es": "Su color rosado proviene de los pigmentos de su alimento. Filtra hasta 20 litros de agua por hora.",
+          "en": "Its pink color comes from pigments in its food. Filters up to 20 liters of water per hour.",
+          "pt": "Sua cor rosa provém dos pigmentos de seu alimento. Filtra até 20 litros de água por hora."
+        },
+        "importanciaEcologica": {
+          "es": "Indicador de calidad del agua. Atrae turismo ornitológico internacional.",
+          "en": "Water quality indicator. Attracts international birdwatching tourism.",
+          "pt": "Indicador de qualidade da água. Atrai turismo ornitológico internacional."
+        },
+        "zonaId": "zona-laguna"
+      },
+      {
+        "id": "garza-azul",
+        "nombre": { "es": "Garza azul", "en": "Little blue heron", "pt": "Garça-azul" },
+        "imagen": "https://images.unsplash.com/photo-1552728083-57bdde30ebb3?w=400&q=80",
+        "silueta": "🦢",
+        "sonido": "garza",
+        "habitat": {
+          "es": "Humedales y manglares de la costa peruana",
+          "en": "Wetlands and mangroves of the Peruvian coast",
+          "pt": "Pantanals e manguezais da costa peruana"
+        },
+        "alimentacion": {
+          "es": "Peces pequeños, ranas e insectos acuáticos",
+          "en": "Small fish, frogs and aquatic insects",
+          "pt": "Peixes pequenos, rãs e insetos aquáticos"
+        },
+        "curiosidades": {
+          "es": "Los juveniles son blancos y se confunden con garzas blancas.",
+          "en": "Juveniles are white and are confused with great egrets.",
+          "pt": "Os juvenis são brancos e confundem-se com garças-brancas."
+        },
+        "importanciaEcologica": {
+          "es": "Controla poblaciones de peces en lagunas urbanas.",
+          "en": "Controls fish populations in urban lagoons.",
+          "pt": "Controla populações de peixes em lagoas urbanas."
+        },
+        "zonaId": "zona-laguna"
+      }
+    ]
+  }
+]

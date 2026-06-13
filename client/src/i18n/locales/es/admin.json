@@ -1,0 +1,16 @@
+{
+  "login": "Iniciar sesión",
+  "username": "Usuario",
+  "password": "Contraseña",
+  "dashboard": "Panel de administración",
+  "stats": "Estadísticas",
+  "visitors": "Visitantes",
+  "discoveries": "Especies descubiertas",
+  "popularDestinos": "Destinos populares",
+  "popularSpecies": "Especies más vistas",
+  "manageDestinos": "Gestionar destinos",
+  "logout": "Cerrar sesión",
+  "edit": "Editar",
+  "save": "Guardar",
+  "delete": "Eliminar"
+}

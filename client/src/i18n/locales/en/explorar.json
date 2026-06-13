@@ -1,0 +1,10 @@
+{
+  "title": "Explore destination",
+  "zones": "Zones",
+  "locked": "Locked",
+  "unlocked": "Unlocked",
+  "identify": "Identify species",
+  "zoneDiscovered": "New zone discovered!",
+  "selectZone": "Select a zone on the map",
+  "speciesInZone": "Species in this zone"
+}
