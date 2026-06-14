@@ -203,31 +203,33 @@ export function DestinosPage() {
       </div>
 
       {selectedVideo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="w-full max-w-3xl overflow-hidden rounded-lg bg-white shadow-lg">
-            <div className="flex items-center justify-between border-b bg-white p-4">
-              <h2 className="text-lg font-bold text-emerald-900">
-                {getTexto(selectedVideo.especie.nombre, i18n.language)}
+        <div className="destinos-video-overlay" role="dialog" aria-modal="true">
+          <div className="destinos-video-dialog">
+            <div className="destinos-video-header">
+              <h2>
+                Video: {getTexto(selectedVideo.especie.nombre, i18n.language)}
               </h2>
               <button
+                type="button"
                 onClick={() => setSelectedVideo(null)}
-                className="text-gray-400 hover:text-gray-600"
+                className="destinos-video-close"
                 aria-label="Cerrar video"
               >
                 <X size={24} />
               </button>
             </div>
-            {isEmbeddedVideo(selectedVideo.url) ? (
-              <iframe
-                src={getVideoEmbedUrl(selectedVideo.url)}
-                className="aspect-video w-full bg-black"
-                title={`Video de ${getTexto(selectedVideo.especie.nombre, i18n.language)}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : (
-              <video src={selectedVideo.url} className="aspect-video w-full bg-black" controls autoPlay />
-            )}
+            <div className="destinos-video-frame">
+              {isEmbeddedVideo(selectedVideo.url) ? (
+                <iframe
+                  src={getVideoEmbedUrl(selectedVideo.url)}
+                  title={`Video de ${getTexto(selectedVideo.especie.nombre, i18n.language)}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <video src={selectedVideo.url} controls autoPlay />
+              )}
+            </div>
           </div>
         </div>
       )}
