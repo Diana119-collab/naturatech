@@ -1,6 +1,6 @@
 import { Lock } from 'lucide-react';
 import type { Especie } from '../types';
-import { getTexto } from '../utils';
+import { getPublicAssetUrl, getTexto } from '../utils';
 import { useTranslation } from 'react-i18next';
 
 interface SpeciesCardProps {
@@ -13,6 +13,7 @@ interface SpeciesCardProps {
 export function SpeciesCard({ especie, discovered, onClick, compact }: SpeciesCardProps) {
   const { i18n } = useTranslation();
   const { t } = useTranslation('especies');
+  const imageUrl = getPublicAssetUrl(especie.imagen) ?? especie.imagen;
 
   return (
     <div
@@ -28,7 +29,7 @@ export function SpeciesCard({ especie, discovered, onClick, compact }: SpeciesCa
       <div className={`relative ${compact ? 'h-28' : 'h-36'} bg-emerald-100 card-media`}>
         {discovered ? (
           <img
-            src={especie.imagen}
+            src={imageUrl}
             alt={getTexto(especie.nombre, i18n.language)}
             className="w-full h-full object-cover"
           />
@@ -56,6 +57,7 @@ export function SpeciesCard({ especie, discovered, onClick, compact }: SpeciesCa
 export function SpeciesDetailCard({ especie, confianza }: { especie: Especie; confianza?: number }) {
   const { i18n } = useTranslation();
   const { t } = useTranslation('especies');
+  const imageUrl = getPublicAssetUrl(especie.imagen) ?? especie.imagen;
 
   const fields = [
     { label: t('habitat'), value: especie.habitat },
@@ -67,7 +69,7 @@ export function SpeciesDetailCard({ especie, confianza }: { especie: Especie; co
   return (
     <div className="space-y-4">
       <img
-        src={especie.imagen}
+        src={imageUrl}
         alt={getTexto(especie.nombre, i18n.language)}
         className="w-full h-48 object-cover rounded-xl"
       />

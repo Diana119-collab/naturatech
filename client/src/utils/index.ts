@@ -4,6 +4,12 @@ export function getTexto(traduccion: { es: string; en: string; pt: string }, lan
   return traduccion.es;
 }
 
+export function getPublicAssetUrl(url?: string): string | undefined {
+  if (!url) return undefined;
+  if (url.startsWith('/')) return `${import.meta.env.BASE_URL}${url.slice(1)}`;
+  return url;
+}
+
 export function generateExplorerId(): string {
   const num = Math.floor(10000 + Math.random() * 90000);
   return `NT-${num}`;

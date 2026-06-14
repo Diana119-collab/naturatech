@@ -4,7 +4,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getDestinos } from '../services/destinoService';
 import type { Destino, Especie, Idioma } from '../types';
-import { getTexto } from '../utils';
+import { getPublicAssetUrl, getTexto } from '../utils';
 
 type SpeciesMatch = {
   destino: Destino;
@@ -44,12 +44,15 @@ export function EspecieDetallePage() {
   const curiosidades = getTexto(especie.curiosidades, i18n.language);
   const importancia = getTexto(especie.importanciaEcologica, i18n.language);
   const description = `${habitat}. ${alimentacion}. ${curiosidades}`;
+  const imageUrl = getPublicAssetUrl(especie.imagen) ?? especie.imagen;
+  const audioUrl = getPublicAssetUrl(especie.audioUrl);
+  const videoUrl = getPublicAssetUrl(especie.videoUrl);
 
   const isEmbeddedVideo =
-    especie.videoUrl?.includes('youtube.com') ||
-    especie.videoUrl?.includes('youtu.be') ||
-    especie.videoUrl?.includes('vimeo.com') ||
-    especie.videoUrl?.includes('sharepoint.com');
+    videoUrl?.includes('youtube.com') ||
+    videoUrl?.includes('youtu.be') ||
+    videoUrl?.includes('vimeo.com') ||
+    videoUrl?.includes('sharepoint.com');
 
   return (
     <article className="species-detail-page">
@@ -57,7 +60,7 @@ export function EspecieDetallePage() {
         <div className="species-detail-hero-inner">
           <div className="species-detail-portrait">
             <img
-              src={especie.imagen}
+              src={imageUrl}
               alt={speciesName}
               onError={(event) => {
                 event.currentTarget.style.display = 'none';
@@ -98,10 +101,10 @@ export function EspecieDetallePage() {
               </div>
             </div>
 
-            {especie.audioUrl && (
+            {audioUrl && (
               <div className="species-detail-audio">
                 <p>Escucha su canto:</p>
-                <audio src={especie.audioUrl} controls preload="metadata">
+                <audio src={audioUrl} controls preload="metadata">
                   Tu navegador no soporta la reproducción de audio.
                 </audio>
               </div>
@@ -116,7 +119,7 @@ export function EspecieDetallePage() {
           <a href="#habitat">HÁBITAT</a>
           <a href="#alimentacion">ALIMENTACIÓN</a>
           <a href="#conservacion">CONSERVACIÓN</a>
-          {especie.videoUrl && <a href="#video">VÍDEO</a>}
+          {videoUrl && <a href="#video">VÍDEO</a>}
         </div>
 
         <div className="species-detail-main">
@@ -150,7 +153,7 @@ export function EspecieDetallePage() {
                 <ExternalLink size={14} />
               </a>
             )}
-            {especie.videoUrl && (
+            {videoUrl && (
               <button type="button" className="species-detail-action" onClick={() => setShowVideo(true)}>
                 <Video size={18} />
                 Ver video
@@ -158,7 +161,7 @@ export function EspecieDetallePage() {
             )}
           </div>
 
-          {showVideo && especie.videoUrl && (
+          {showVideo && videoUrl && (
             <section id="video" className="species-detail-video">
               <div className="species-detail-video-header">
                 <h3>Vídeo</h3>
@@ -166,13 +169,13 @@ export function EspecieDetallePage() {
               </div>
               {isEmbeddedVideo ? (
                 <iframe
-                  src={especie.videoUrl}
+                  src={videoUrl}
                   title={`Video de ${speciesName}`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
               ) : (
-                <video src={especie.videoUrl} controls />
+                <video src={videoUrl} controls />
               )}
             </section>
           )}

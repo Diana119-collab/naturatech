@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getDestinos } from '../services/destinoService';
 import type { Destino, Especie, Idioma } from '../types';
-import { getTexto } from '../utils';
+import { getPublicAssetUrl, getTexto } from '../utils';
 
 export function DestinosPage() {
   const { i18n } = useTranslation();
@@ -67,6 +67,8 @@ export function DestinosPage() {
     }
   };
 
+  const getMediaUrl = (url: string) => getPublicAssetUrl(url) ?? url;
+
   const isEmbeddedVideo = (url: string) => {
     const embedUrl = getVideoEmbedUrl(url);
     return (
@@ -92,7 +94,7 @@ export function DestinosPage() {
     }
 
     audioRef.current?.pause();
-    const audio = new Audio(getAudioSourceUrl(especie.audioUrl));
+    const audio = new Audio(getAudioSourceUrl(getMediaUrl(especie.audioUrl)));
     audioRef.current = audio;
     audio.onended = () => setPlayingAudioId(null);
     audio.onerror = () => setPlayingAudioId(null);
@@ -159,7 +161,7 @@ export function DestinosPage() {
                       <button
                         type="button"
                         className="destinos-media-button"
-                        onClick={() => setSelectedVideo({ especie, url: especie.videoUrl! })}
+                        onClick={() => setSelectedVideo({ especie, url: getMediaUrl(especie.videoUrl!) })}
                         aria-label={`Ver video de ${speciesName}`}
                         title="Video"
                       >
@@ -176,7 +178,7 @@ export function DestinosPage() {
                 >
                   <span className="destinos-species-image-wrap">
                     <img
-                      src={especie.imagen}
+                      src={getMediaUrl(especie.imagen)}
                       alt=""
                       className="destinos-species-image"
                       onError={(event) => {
