@@ -8,6 +8,7 @@ import { getPublicAssetUrl, getTexto } from '../utils';
 
 export function DestinosPage() {
   const { i18n } = useTranslation();
+  const { t } = useTranslation('destinos');
   const [destinos, setDestinos] = useState<Destino[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<{ especie: Especie; url: string } | null>(null);
   const [playingAudioId, setPlayingAudioId] = useState<string | null>(null);
@@ -110,11 +111,10 @@ export function DestinosPage() {
   return (
     <div className="destinos-species-page">
       <header className="destinos-species-header">
-        <p>Explora la biodiversidad de La Arenilla</p>
-        <h1>Especies emblemáticas</h1>
+        <p> {t('title')}</p>
+        <h1>{t('principalTitle')}</h1>
         <span>
-          Conoce las aves del humedal, escucha sus sonidos y abre su ficha para descubrir su hábitat,
-          alimentación e importancia ecológica.
+          {t('description')}
         </span>
       </header>
 
@@ -193,7 +193,7 @@ export function DestinosPage() {
                     {habitatText}
                   </span>
                   <span className="destinos-species-link">
-                    Ver ficha
+                    {t('ficha')}
                   </span>
                 </Link>
               </article>

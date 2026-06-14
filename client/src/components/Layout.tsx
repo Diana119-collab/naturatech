@@ -1,11 +1,13 @@
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 import { TreePine } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { LanguageSelector } from './LanguageSelector';
 import { ExploradorBadge } from './ExploradorBadge';
 import { AccessibilityPanel } from './AccessibilityPanel';
 
 export function Layout() {
   const { pathname } = useLocation();
+  const { t } = useTranslation('landing');
   const isDestinosActive = pathname === '/destinos' || pathname.startsWith('/explorar/') || pathname.startsWith('/ave/');
   const navLinkClass = (isActive: boolean) =>
     `text-sm font-medium ${isActive ? 'active-nav-link text-white' : 'text-gray-600 hover:text-emerald-700'}`;
@@ -22,16 +24,16 @@ export function Layout() {
             <div className="nav-pill">
               <nav className="flex items-center gap-4">
                 <NavLink to="/" end className={({ isActive }) => navLinkClass(isActive)}>
-                  Inicio
+                  {t('pages.start')}
                 </NavLink>
                 <NavLink to="/destinos" className={() => navLinkClass(isDestinosActive)}>
-                  Especies
+                  {t('pages.species')}
                 </NavLink>
                 <NavLink to="/especies" className={({ isActive }) => navLinkClass(isActive)}>
-                  Identifica tu ave
+                  {t('pages.identify')}
                 </NavLink>
                 <NavLink to="/ia" className={({ isActive }) => navLinkClass(isActive)}>
-                  Asistente AI
+                  {t('pages.ia')}
                 </NavLink>
               </nav>
             </div>

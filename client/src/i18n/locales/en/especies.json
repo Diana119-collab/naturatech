@@ -1,6 +1,6 @@
 {
-  "title": "My collection",
-  "progress": "{{found}} of {{total}} species discovered",
+  "title": "Identify your species",
+  "progress": "Progress: {{found}} of {{total}} species discovered.",
   "locked": "To discover",
   "discovered": "Discovered",
   "habitat": "Habitat",
@@ -11,6 +11,14 @@
   "upload": "Upload photo",
   "camera": "Take photo",
   "sound": "Choose sound",
+  "uploadDescription": "Upload a photo from your gallery",
+  "cameraDescription": "Use your camera to capture the bird",
+  "soundDescription": "Upload or record a bird song",
+  "btnUpload": "Upload",
+  "btnCamera": "Take Photo",
+  "btnSound": "Choose Audio",
   "analyzing": "Analyzing...",
-  "confidence": "Confidence"
+  "confidence": "Confidence",
+  "unlock": "Unlocked!",
+  "message": "Upload a photo, take a photo or upload a sound to identify the bird."
 }

@@ -1,6 +1,6 @@
 {
-  "title": "Mi colección",
-  "progress": "{{found}} de {{total}} especies descubiertas",
+  "title": "Identifica tu especie",
+  "progress": "Progreso: {{found}} de {{total}} especies descubiertas.",
   "locked": "Por descubrir",
   "discovered": "Descubierta",
   "habitat": "Hábitat",
@@ -9,8 +9,16 @@
   "ecology": "Importancia ecológica",
   "identifyTitle": "Identifica una especie",
   "upload": "Subir foto",
+  "uploadDescription": "Sube una foto de tu galería",
   "camera": "Tomar foto",
+  "cameraDescription": "Usa tu cámara para capturar al ave",
   "sound": "Elegir sonido",
+  "soundDescription": "Carga o graba un sonido de canto",
+  "btnUpload": "Subir",
+  "btnCamera": "Tomar Foto",
+  "btnSound": "Elegir Audio",
   "analyzing": "Analizando...",
-  "confidence": "Confianza"
+  "confidence": "Confianza",
+  "unlock": "¡Desbloqueado!",
+  "message": "Sube una foto, toma una foto o carga un sonido para identificar el ave."
 }

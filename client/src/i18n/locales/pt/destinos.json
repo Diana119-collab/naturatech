@@ -1,6 +1,9 @@
 {
-  "title": "Escolha seu destino",
   "explore": "Explorar",
   "ecosystem": "Ecossistema",
-  "specialty": "Especialidade"
+  "specialty": "Especialidade",
+  "title": "Explore a biodiversidade de La Arenilla",
+  "principalTitle": "Espécies emblemáticas",
+  "description": "Conheça as aves do pântano, ouça seus sons e abra sua ficha para descobrir seu habitat, dieta e importância ecológica.",
+  "ficha": "Ver ficha"
 }

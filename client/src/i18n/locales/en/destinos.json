@@ -1,6 +1,9 @@
 {
-  "title": "Choose your destination",
   "explore": "Explore",
   "ecosystem": "Ecosystem",
-  "specialty": "Specialty"
+  "specialty": "Specialty",
+  "title": "Explore the biodiversity of La Arenilla",
+  "principalTitle": "Emblematic species",
+  "description": "Meet the birds of the wetland, listen to their sounds and open their file to discover their habitat, diet and ecological importance.",
+  "ficha": "View file"
 }

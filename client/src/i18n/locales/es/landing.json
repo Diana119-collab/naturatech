@@ -1,6 +1,12 @@
 {
-  "title": "NaturaTech",
+  "title": "Humedal Costero Poza de La Arenilla",
   "subtitle": "Explora la biodiversidad de la Poza de La Arenilla",
   "message": "Descubre especies, desbloquea rutas y conviértete en explorador de naturaleza",
-  "cta": "Comenzar exploración"
+  "cta": "Comenzar exploración",
+  "pages": {
+    "start": "Inicio",
+    "species": "Especies",
+    "identify": "Identifica tu ave",
+    "ia": "Asistente IA"
+  }
 }

@@ -1,6 +1,6 @@
 # NaturaTech
 
-Plataforma digital de turismo de naturaleza con IA, gamificación, accesibilidad e i18n — prototipo para hackathon.
+Plataforma digital de turismo de naturaleza con IA, gamificación, accesibilidad e i18n.
 
 ## Requisitos
 
@@ -38,11 +38,9 @@ npm run preview
 | Ruta | Descripción |
 |------|-------------|
 | `/` | Landing page |
-| `/destinos` | Lista de destinos |
-| `/explorar/la-arenilla` | Mapa interactivo (demo principal) |
-| `/especies` | Colección digital |
-| `/ia` | Guía Natura AI |
-| `/certificado` | Certificado digital |
+| `/destinos` | Lista de especies |
+| `/especies` | Identifica tu Ave |
+| `/ia` | Asistente AI |
 | `/admin/login` | Panel admin (admin / naturatech2026) |
 
 ## Demo principal: La Arenilla
@@ -51,14 +49,6 @@ Destino completo con 3 zonas y 5 especies:
 - Humedal: Garza blanca, Playerito
 - Orilla: Pelícano peruano, Gaviota
 - Mirador: Cormorán
-
-## Guion demo (3 minutos)
-
-1. **0:00–0:30** — Landing: presentar NaturaTech, cambiar idioma (ES/EN/PT)
-2. **0:30–1:15** — Elegir La Arenilla → mapa con zonas bloqueadas → identificar Garza blanca → zona desbloqueada
-3. **1:15–2:00** — Ver colección, puntos/nivel, preguntar a Natura AI sobre colibríes
-4. **2:00–2:30** — Activar modo accesibilidad (voz + texto grande)
-5. **2:30–3:00** — Completar destino → certificado PDF → mencionar Cocachimba y Pantanos de Villa
 
 ## Stack
 

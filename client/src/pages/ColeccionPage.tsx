@@ -34,10 +34,11 @@ function findSpeciesFromFileName(file: File, species: Especie[]) {
 
 export function ColeccionPage() {
   const { i18n } = useTranslation();
+  const { t } = useTranslation('especies');
   const navigate = useNavigate();
   const [destinos, setDestinos] = useState<Destino[]>([]);
   const [loadingMode, setLoadingMode] = useState<IdentifyMode | null>(null);
-  const [message, setMessage] = useState('Sube una foto, toma una foto o carga un sonido para identificar el ave.');
+  const [message, setMessage] = useState(t('message'));
   const uploadRef = useRef<HTMLInputElement>(null);
   const cameraRef = useRef<HTMLInputElement>(null);
   const soundRef = useRef<HTMLInputElement>(null);
@@ -85,27 +86,27 @@ export function ColeccionPage() {
   const actions = [
     {
       id: 'upload' as const,
-      title: 'Subir Foto',
-      description: 'Sube una foto de tu galería',
-      button: 'Subir',
+      title: t('upload'),
+      description: t('uploadDescription'),
+      button: t('btnUpload'),
       icon: Upload,
       onClick: () => uploadRef.current?.click(),
       loading: loadingMode === 'upload',
     },
     {
       id: 'camera' as const,
-      title: 'Tomar Foto',
-      description: 'Usa tu cámara para capturar al ave',
-      button: 'Tomar Foto',
+      title: t('camera'),
+      description: t('cameraDescription'),
+      button: t('btnCamera'),
       icon: Camera,
       onClick: () => cameraRef.current?.click(),
       loading: loadingMode === 'camera',
     },
     {
       id: 'sound' as const,
-      title: 'Elegir Sonido',
-      description: 'Carga o graba un sonido de canto',
-      button: 'Elegir Audio',
+      title: t('sound'),
+      description: t('soundDescription'),
+      button: t('btnSound'),
       icon: AudioLines,
       onClick: () => soundRef.current?.click(),
       loading: loadingMode === 'sound',
@@ -116,8 +117,7 @@ export function ColeccionPage() {
     <div className="identify-page">
       <section className="identify-shell">
         <div className="identify-main">
-          <h1>Identifica tu Ave con IA</h1>
-
+          <h1>{t('identifyTitle')}</h1>
           <div className="identify-actions">
             {actions.map(({ id, title, description, button, icon: Icon, onClick, loading }) => (
               <article className="identify-action-card" key={id}>
@@ -156,9 +156,9 @@ export function ColeccionPage() {
         </div>
 
         <aside className="identify-challenge" aria-label="Progreso de colección">
-          <h2>Gamer</h2>
-          <h3>¡Tu Desafío de Colección!</h3>
-          <p>Tu progreso: {discovered.length} de {allSpecies.length} aves desbloqueadas</p>
+          <h2>Visitante</h2>
+          <h3>¡Tu Desafío ha empezado!</h3>
+          <p> {t('progress', { found: discovered.length, total: allSpecies.length })}</p>
           <div className="identify-progress-row">
             <div className="identify-progress">
               <span style={{ width: `${progressPercent}%` }} />
@@ -179,13 +179,13 @@ export function ColeccionPage() {
                   {unlocked ? (
                     <>
                       <img src={getPublicAssetUrl(especie.imagen)} alt="" />
-                      <span>¡Desbloqueado!</span>
+                      <span>{t('unlock')}</span>
                     </>
                   ) : (
                     <>
                       <Lock size={20} />
                       <strong>???</strong>
-                      <span>Por descubrir</span>
+                      <span>{t('locked')}</span>
                     </>
                   )}
                 </button>

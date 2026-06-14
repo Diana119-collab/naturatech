@@ -1,6 +1,6 @@
 {
-  "title": "Minha coleção",
-  "progress": "{{found}} de {{total}} espécies descobertas",
+  "title": "Identifique sua espécie",
+  "progress": "Progresso: {{found}} de {{total}} espécies descobertas.",
   "locked": "Por descobrir",
   "discovered": "Descoberta",
   "habitat": "Habitat",
@@ -11,6 +11,14 @@
   "upload": "Enviar foto",
   "camera": "Tirar foto",
   "sound": "Escolher som",
+  "uploadDescription": "Envie uma foto da sua galeria",
+  "cameraDescription": "Use sua câmera para capturar a ave",
+  "soundDescription": "Envie ou grave um som de canto",
+  "btnUpload": "Enviar",
+  "btnCamera": "Tirar Foto",
+  "btnSound": "Escolher Áudio",
   "analyzing": "Analisando...",
-  "confidence": "Confiança"
+  "confidence": "Confiança",
+  "unlock": "Desbloqueado!",
+  "message": "Envie uma foto, tire uma foto ou carregue um som para identificar a ave."
 }
