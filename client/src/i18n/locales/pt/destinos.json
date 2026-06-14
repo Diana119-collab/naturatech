@@ -1,9 +1,6 @@
 {
   "title": "Escolha seu destino",
-  "subtitle": "Explore ecossistemas únicos do Peru",
   "explore": "Explorar",
-  "preview": "Em breve",
-  "progress": "{{found}} de {{total}} espécies",
   "ecosystem": "Ecossistema",
   "specialty": "Especialidade"
 }

@@ -6,6 +6,7 @@ import { AccessibilityProvider } from './context/AccessibilityContext';
 import { ToastProvider } from './context/ToastContext';
 import { LandingPage } from './pages/LandingPage';
 import { DestinosPage } from './pages/DestinosPage';
+import { EspecieDetallePage } from './pages/EspecieDetallePage';
 import { ExplorarPage } from './pages/ExplorarPage';
 import { ColeccionPage } from './pages/ColeccionPage';
 import { GuiaIAPage } from './pages/GuiaIAPage';
@@ -24,6 +25,7 @@ export default function App() {
               <Route element={<Layout />}>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/destinos" element={<DestinosPage />} />
+                <Route path="/ave/:especieId" element={<EspecieDetallePage />} />
                 <Route path="/explorar/:destino" element={<ExplorarPage />} />
                 <Route path="/especies" element={<ColeccionPage />} />
                 <Route path="/ia" element={<GuiaIAPage />} />

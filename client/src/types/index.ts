@@ -26,11 +26,15 @@ export interface Especie {
   imagen: string;
   silueta: string;
   sonido?: string;
+  audioUrl?: string;
+  videoUrl?: string;
   habitat: TraduccionTexto;
   alimentacion: TraduccionTexto;
   curiosidades: TraduccionTexto;
   importanciaEcologica: TraduccionTexto;
   zonaId: string;
+  pdfUrl?: string;
+  pdfUrls?: Partial<Record<Idioma, string>>;
 }
 
 export interface Destino {

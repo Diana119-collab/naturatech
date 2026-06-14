@@ -6,7 +6,7 @@ import { AccessibilityPanel } from './AccessibilityPanel';
 
 export function Layout() {
   const { pathname } = useLocation();
-  const isDestinosActive = pathname === '/destinos' || pathname.startsWith('/explorar/');
+  const isDestinosActive = pathname === '/destinos' || pathname.startsWith('/explorar/') || pathname.startsWith('/ave/');
   const navLinkClass = (isActive: boolean) =>
     `text-sm font-medium ${isActive ? 'active-nav-link text-white' : 'text-gray-600 hover:text-emerald-700'}`;
 
@@ -16,7 +16,7 @@ export function Layout() {
         <div className="site-header-inner max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Link to="/" className="site-logo flex items-center gap-2 shrink-0">
             <TreePine className="text-emerald-600" size={28} />
-            <span className="font-bold text-xl text-emerald-800 hidden sm:block">NaturaTech | Poza de La Arenilla</span>
+            <span className="font-bold text-xl text-emerald-800 hidden sm:block">NaturaTech</span>
           </Link>
           <div className="site-header-center hidden md:flex items-center gap-6">
             <div className="nav-pill">
@@ -25,13 +25,13 @@ export function Layout() {
                   Inicio
                 </NavLink>
                 <NavLink to="/destinos" className={() => navLinkClass(isDestinosActive)}>
-                  Destinos
+                  Especies
                 </NavLink>
                 <NavLink to="/especies" className={({ isActive }) => navLinkClass(isActive)}>
-                  Colección
+                  Identifica tu ave
                 </NavLink>
                 <NavLink to="/ia" className={({ isActive }) => navLinkClass(isActive)}>
-                  Natura AI
+                  Asistente AI
                 </NavLink>
               </nav>
             </div>

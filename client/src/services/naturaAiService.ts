@@ -7,15 +7,7 @@ interface RespuestaIA {
 
 const RESPUESTAS: RespuestaIA[] = [
   {
-    keywords: ['colibr', 'colores brillantes', 'pequeñ', 'hummingbird', 'beija'],
-    respuesta: {
-      es: 'Podría tratarse de un colibrí. Observa su tamaño pequeño y el movimiento rápido de sus alas. En Cocachimba encontrarás especies endémicas espectaculares.',
-      en: 'It could be a hummingbird. Notice its small size and rapid wing movement. In Cocachimba you will find spectacular endemic species.',
-      pt: 'Pode ser um beija-flor. Observe seu tamanho pequeno e o movimento rápido das asas. Em Cocachimba você encontrará espécies endêmicas espetaculares.',
-    },
-  },
-  {
-    keywords: ['garza', 'blanc', 'egret', 'garça'],
+    keywords: ['garza', 'blanc', 'egret', 'garça', 'pajaro alto'],
     respuesta: {
       es: 'Probablemente es una garza blanca. Busca en zonas de agua poco profunda del humedal. Permanece muy quieta antes de capturar su presa.',
       en: 'It is probably a great egret. Look in shallow water areas of the wetland. It stays very still before catching its prey.',
@@ -23,7 +15,7 @@ const RESPUESTAS: RespuestaIA[] = [
     },
   },
   {
-    keywords: ['pelícan', 'pelican', 'pico grande', 'beak'],
+    keywords: ['pelícan', 'pelican', 'pico grande', 'beak', 'bolsa gular', 'gular pouch', 'pelicano'],
     respuesta: {
       es: 'Suena como un pelícano peruano. Es endémico del Pacífico sur. Observa su gran pico y bolsa gular en la orilla.',
       en: 'Sounds like a Peruvian pelican. It is endemic to the South Pacific. Watch for its large beak and gular pouch on the shore.',
@@ -31,7 +23,7 @@ const RESPUESTAS: RespuestaIA[] = [
     },
   },
   {
-    keywords: ['ruta', 'camino', 'route', 'path', 'caminho'],
+    keywords: ['ruta', 'camino', 'route', 'path', 'caminho', 'trilha'],
     respuesta: {
       es: 'Te recomiendo comenzar por el Humedal 🌿, luego la Orilla 🌊 y finalmente el Mirador 🔭. Descubre especies en cada zona para desbloquear la siguiente.',
       en: 'I recommend starting at the Wetland 🌿, then the Shore 🌊 and finally the Viewpoint 🔭. Discover species in each zone to unlock the next.',
@@ -39,7 +31,7 @@ const RESPUESTAS: RespuestaIA[] = [
     },
   },
   {
-    keywords: ['recomend', 'suggest', 'consejo', 'tip', 'dica'],
+    keywords: ['recomend', 'suggest', 'consejo', 'tip', 'dica', 'observación', 'observation', 'observação'],
     respuesta: {
       es: 'Visita temprano en la mañana cuando las aves son más activas. Lleva binoculares y mantén silencio para no perturbar la fauna.',
       en: 'Visit early in the morning when birds are most active. Bring binoculars and stay quiet to avoid disturbing wildlife.',
@@ -47,7 +39,7 @@ const RESPUESTAS: RespuestaIA[] = [
     },
   },
   {
-    keywords: ['ecolog', 'importanc', 'conserv', 'medio ambiente', 'environment'],
+    keywords: ['ecolog', 'importanc', 'conserv', 'medio ambiente', 'environment', 'humedales', 'wetlands', 'pantanais'],
     respuesta: {
       es: 'Los humedales son filtros naturales del agua y refugio de especies migratorias. Protegerlos es esencial para la biodiversidad del Perú.',
       en: 'Wetlands are natural water filters and refuge for migratory species. Protecting them is essential for Peru\'s biodiversity.',
@@ -97,7 +89,7 @@ export async function askNaturaAI(
 
 export const SUGERENCIAS = {
   es: [
-    'Vi un ave pequeña con colores brillantes',
+    'Vi un pajaro de cuello alto y plumaje blanco',
     '¿Qué ruta me recomiendas?',
     '¿Por qué son importantes los humedales?',
   ],
