@@ -113,9 +113,9 @@
         },
         "zonaId": "zona-humedal",
         "pdfUrls": {
-          "es": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/GARZA%20AZUL/ESPA%C3%91OL%20-%20GARZA%20AZUL.pdf?csf=1&web=1&e=HdZx2R",
-          "en": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/GARZA%20AZUL/ENGLISH%20-%20BLUE%20HERON.pdf?csf=1&web=1&e=oaZiek",
-          "pt": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/GARZA%20AZUL/PORTUGUES%20-%20Gar%C3%A7a%20Azul.pdf?csf=1&web=1&e=IbrvTN"
+          "es": "/esp-garza-azul.pdf",
+          "en": "/eng-garza-azul.pdf",
+          "pt": "/prt-garza-azul.pdf"
         },
         "audioUrl": "/garza-azul-audio.mp3",
         "videoUrl": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/201743431/mp4/1280"
@@ -152,9 +152,9 @@
         },
         "zonaId": "zona-orilla",
         "pdfUrls": {
-          "es": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/PELICANO%20PERUANO/ESPA%C3%91OL%20-%20PEL%C3%8DCANO%20PERUANO.pdf?csf=1&web=1&e=CZdIfD",
-          "en": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/PELICANO%20PERUANO/ENGLISH%20-%20PERUVIAN%20PELICAN.pdf?csf=1&web=1&e=wGJVd8",
-          "pt": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/PELICANO%20PERUANO/PORTUGUES%20-%20PELICANO%20PERUANO.pdf?csf=1&web=1&e=0KiaY3"
+          "es": "/esp-pelicano-peruano.pdf",
+          "en": "/eng-pelicano-peruano.pdf",
+          "pt": "/prt-pelicano-peruano.pdf"
         },
         "audioUrl": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/620102385/mp3",
         "videoUrl": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/201724111/mp4/1280"
@@ -190,9 +190,9 @@
         },
         "zonaId": "zona-mirador",
         "pdfUrls": {
-          "es": "https://munipunta-my.sharepoint.com/personal/oga06_munilapunta_gob_pe/_layouts/15/onedrive.aspx?viewid=06d7a43e%2Da841%2D47c8%2Da32a%2Da79e67a5daac&id=%2Fpersonal%2Foga06%5Fmunilapunta%5Fgob%5Fpe%2FDocuments%2FHACKATHON%202026%2FDATOS%20DISPONIBLES%2FESPECIES%20EMBLEMATICAS%2FCORMORANES%20NEOTROPICALES%2FESPA%C3%91OL%20%2D%20CORMOR%C3%81N%20NEOTROPICAL%2Epdf&parent=%2Fpersonal%2Foga06%5Fmunilapunta%5Fgob%5Fpe%2FDocuments%2FHACKATHON%202026%2FDATOS%20DISPONIBLES%2FESPECIES%20EMBLEMATICAS%2FCORMORANES%20NEOTROPICALES",
-          "en": "",
-          "pt": ""
+          "es": "/esp-comorran-neotropical.pdf",
+          "en": "/eng-comorran-neotropical.pdf",
+          "pt": "/prt-comorran-neotropical.pdf"
         },
         "audioUrl": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/209689571/mp3",
         "videoUrl": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/201625451/mp4/1280"
@@ -229,9 +229,9 @@
         },
         "zonaId": "zona-orilla",
         "pdfUrls": {
-          "es": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/GAVIOTA%20PERUANA/ESPA%C3%91OL%20-%20GAVIOTA%20PERUANA.pdf?csf=1&web=1&e=xWjbcw",
-          "en": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/GAVIOTA%20PERUANA/ENGLISH%20-%20PERUVIAN%20GULL.pdf?csf=1&web=1&e=Hf5aDC",
-          "pt": "https://munipunta-my.sharepoint.com/:b:/r/personal/oga06_munilapunta_gob_pe/Documents/HACKATHON%202026/DATOS%20DISPONIBLES/ESPECIES%20EMBLEMATICAS/GAVIOTA%20PERUANA/PORTUGUES%20-%20GAVIOTA%20PERUANA.pdf?csf=1&web=1&e=cewRHI"
+          "es": "/esp-gaviota-peruana.pdf",
+          "en": "/eng-gaviota-peruana.pdf",
+          "pt": "/prt-gaviota-peruana.pdf"
         },
         "audioUrl": "/gaviota-peruana-audio.mp3",
         "videoUrl": "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/201682571/mp4/1280"

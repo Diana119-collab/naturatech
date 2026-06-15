@@ -4,7 +4,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getDestinos } from '../services/destinoService';
 import type { Destino, Especie, Idioma } from '../types';
-import { getPublicAssetUrl, getTexto } from '../utils';
+import { getPublicAssetUrl, getPdfUrl, getTexto } from '../utils';
 
 type SpeciesMatch = {
   destino: Destino;
@@ -38,7 +38,7 @@ export function EspecieDetallePage() {
   const { destino, especie } = match;
   const currentLanguage = (['es', 'en', 'pt'].includes(i18n.language) ? i18n.language : 'es') as Idioma;
   const speciesName = getTexto(especie.nombre, i18n.language);
-  const pdfUrl = especie.pdfUrls?.[currentLanguage] || especie.pdfUrl;
+  const pdfUrl = getPdfUrl(especie.pdfUrls?.[currentLanguage] || especie.pdfUrl);
   const habitat = getTexto(especie.habitat, i18n.language);
   const alimentacion = getTexto(especie.alimentacion, i18n.language);
   const curiosidades = getTexto(especie.curiosidades, i18n.language);

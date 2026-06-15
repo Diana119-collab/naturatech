@@ -10,6 +10,22 @@ export function getPublicAssetUrl(url?: string): string | undefined {
   return url;
 }
 
+export function getPdfUrl(url?: string): string | undefined {
+  if (!url) return undefined;
+  
+  // Agregar timestamp para evitar caché en desarrollo
+  const separator = url.includes('?') ? '&' : '?';
+  const timestamp = import.meta.env.DEV ? `v=${Date.now()}` : '';
+  
+  if (url.startsWith('/')) {
+    const publicUrl = `${import.meta.env.BASE_URL}${url.slice(1)}`;
+    return timestamp ? `${publicUrl}${separator}${timestamp}` : publicUrl;
+  }
+  
+  // Para URLs externas (SharePoint, etc), no agregar timestamp
+  return url;
+}
+
 export function generateExplorerId(): string {
   const num = Math.floor(10000 + Math.random() * 90000);
   return `NT-${num}`;

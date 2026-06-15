@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { getDestinos } from '../services/destinoService';
 import type { Destino, Especie, Idioma } from '../types';
-import { getPublicAssetUrl, getTexto } from '../utils';
+import { getPublicAssetUrl, getPdfUrl as getPdfUrlWithCache, getTexto } from '../utils';
 
 export function DestinosPage() {
   const { i18n } = useTranslation();
@@ -26,7 +26,7 @@ export function DestinosPage() {
 
   const currentLanguage = (['es', 'en', 'pt'].includes(i18n.language) ? i18n.language : 'es') as Idioma;
 
-  const getPdfUrl = (especie: Especie) => especie.pdfUrls?.[currentLanguage] || especie.pdfUrl;
+  const getPdfUrl = (especie: Especie) => getPdfUrlWithCache(especie.pdfUrls?.[currentLanguage] || especie.pdfUrl);
 
   const getVideoEmbedUrl = (url: string) => {
     try {
