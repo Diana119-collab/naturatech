@@ -2016,3 +2016,191 @@ html[data-a11y-contrast="true"] [class*="border-emerald"] {
     transform: scale(0.55);
   }
 }
+
+.admin-dashboard-layout {
+  min-height: 100vh;
+  background: var(--bg-1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contenedor del Banner Superior (Sustituye al header antiguo) */
+.admin-site-header {
+  background: rgba(255, 255, 255, 0.95);
+  border-b: 1px solid rgba(4, 120, 87, 0.12);
+  box-shadow: 0 2px 10px rgba(2, 6, 23, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+}
+
+.admin-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Estructura dividida: Sidebar + Contenido */
+.admin-workspace {
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+}
+
+/* Sidebar de navegación del Administrador */
+.admin-sidebar {
+  width: 260px;
+  background: rgba(255, 255, 255, 0.45);
+  border-right: 1px solid rgba(4, 120, 87, 0.08);
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: sticky;
+  top: 72px;
+  h: calc(100vh - 72px);
+}
+
+.admin-sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-sidebar-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 12px;
+  margin-bottom: 6px;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #334155;
+  font-weight: 600;
+  font-size: 0.925rem;
+  text-decoration: none;
+  transition: all 150ms ease;
+}
+
+.admin-nav-link:hover {
+  background: rgba(4, 120, 87, 0.05);
+  color: var(--accent);
+}
+
+.admin-nav-link.is-active {
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(4, 120, 87, 0.16);
+}
+
+/* Panel de Contenido Principal */
+.admin-main-content {
+  flex: 1;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow-y: auto;
+}
+
+/* Cabecera interna del contenido */
+.admin-content-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(4, 120, 87, 0.08);
+  padding-bottom: 20px;
+}
+
+.admin-page-title {
+  margin: 0;
+  color: #064e3b;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* Rejillas del Dashboard */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.admin-rankings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .admin-rankings-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Tarjetas Propias del Panel de Control */
+.admin-dashboard-card {
+  background: #ffffff;
+  border: 1px solid rgba(4, 120, 87, 0.06);
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 25px rgba(2, 6, 23, 0.04);
+  padding: 24px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.admin-dashboard-card:hover {
+  box-shadow: 0 14px 35px rgba(2, 6, 23, 0.07);
+}
+
+/* Estilos de inputs de edición */
+.admin-editable-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  background: #f8fafc;
+  resize: vertical;
+  transition: all 150ms ease;
+}
+
+.admin-editable-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.12);
+}
+
+/* Ajustes Responsivos Móviles */
+@media (max-width: 768px) {
+  .admin-workspace {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    padding: 16px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(4, 120, 87, 0.08);
+  }
+  .admin-main-content {
+    padding: 24px 16px;
+  }
+}
