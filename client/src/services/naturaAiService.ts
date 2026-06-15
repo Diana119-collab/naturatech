@@ -9,7 +9,7 @@ const RESPUESTAS: RespuestaIA[] = [
   {
     keywords: ['garza', 'blanc', 'egret', 'garça', 'pajaro alto'],
     respuesta: {
-      es: 'Probablemente es una garza blanca. Busca en zonas de agua poco profunda del humedal. Permanece muy quieta antes de capturar su presa.',
+      es: 'Probablemente es una garza blanca. Busca en zonas de agua poco profunda del humedal. Permanece muy quieta antes de capturar a su presa.',
       en: 'It is probably a great egret. Look in shallow water areas of the wetland. It stays very still before catching its prey.',
       pt: 'Provavelmente é uma garça-branca. Procure em zonas de água rasa do pantanal. Permanece muito quieta antes de capturar a presa.',
     },

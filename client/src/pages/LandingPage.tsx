@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { getDestinos } from '../services/destinoService';
 import type { Destino } from '../types';
 import { getTexto } from '../utils';
+import { useAccessibility } from '../context/AccessibilityContext';
 import 'leaflet/dist/leaflet.css';
 
 const startExplorationPath = '/especies';
@@ -14,10 +15,17 @@ export function LandingPage() {
   const { t } = useTranslation('landing');
   const { i18n } = useTranslation();
   const [destinos, setDestinos] = useState<Destino[]>([]);
+  const { speak } = useAccessibility();
 
   useEffect(() => {
     getDestinos().then(setDestinos);
   }, []);
+
+  useEffect(() => {
+    // Leer textos principales cuando se carga la página
+    const textToSpeak = `${t('title')}. ${t('subtitle')}. ${t('message')}`;
+    speak(textToSpeak, i18n.language);
+  }, [t, i18n.language, speak]);
 
   return (
     <div className="landing-page space-y-8">

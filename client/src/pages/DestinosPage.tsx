@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { getDestinos } from '../services/destinoService';
 import type { Destino, Especie, Idioma } from '../types';
 import { getPublicAssetUrl, getPdfUrl as getPdfUrlWithCache, getTexto } from '../utils';
+import { useAccessibility } from '../context/AccessibilityContext';
 
 export function DestinosPage() {
   const { i18n } = useTranslation();
@@ -13,10 +14,17 @@ export function DestinosPage() {
   const [selectedVideo, setSelectedVideo] = useState<{ especie: Especie; url: string } | null>(null);
   const [playingAudioId, setPlayingAudioId] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { speak } = useAccessibility();
 
   useEffect(() => {
     getDestinos().then(setDestinos);
   }, []);
+
+  useEffect(() => {
+    // Leer título y descripción cuando se carga la página
+    const textToSpeak = `${t('title')}. ${t('description')}`;
+    speak(textToSpeak, i18n.language);
+  }, [t, i18n.language, speak]);
 
   useEffect(() => {
     return () => {

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { getDestinos } from '../services/destinoService';
 import type { Destino, Especie, Idioma } from '../types';
 import { getPublicAssetUrl, getPdfUrl, getTexto } from '../utils';
+import { useAccessibility } from '../context/AccessibilityContext';
 
 type SpeciesMatch = {
   destino: Destino;
@@ -16,6 +17,7 @@ export function EspecieDetallePage() {
   const { i18n } = useTranslation();
   const [match, setMatch] = useState<SpeciesMatch | null | undefined>(undefined);
   const [showVideo, setShowVideo] = useState(false);
+  const { speak } = useAccessibility();
 
   useEffect(() => {
     getDestinos().then((destinos) => {
@@ -26,6 +28,21 @@ export function EspecieDetallePage() {
       setMatch(found ?? null);
     });
   }, [especieId]);
+
+  useEffect(() => {
+    // Leer información de la especie cuando se carga
+    if (match && match !== undefined && match !== null) {
+      const { especie } = match;
+      const speciesName = getTexto(especie.nombre, i18n.language);
+      const habitat = getTexto(especie.habitat, i18n.language);
+      const alimentacion = getTexto(especie.alimentacion, i18n.language);
+      const curiosidades = getTexto(especie.curiosidades, i18n.language);
+      const importancia = getTexto(especie.importanciaEcologica, i18n.language);
+      
+      const textToSpeak = `${speciesName}. ${habitat}. ${alimentacion}. ${curiosidades}. ${importancia}`;
+      speak(textToSpeak, i18n.language);
+    }
+  }, [match, i18n.language, speak]);
 
   if (match === undefined) {
     return <div className="species-detail-loading">Cargando especie...</div>;

@@ -6,6 +6,7 @@ import { getDestinos } from '../services/destinoService';
 import { identificarPorFoto, identificarPorSonido } from '../services/aiService';
 import type { Destino, Especie, IdentificacionResult } from '../types';
 import { useProgress } from '../context/ProgressContext';
+import { useAccessibility } from '../context/AccessibilityContext';
 import { getPublicAssetUrl, getTexto } from '../utils';
 
 type IdentifyMode = 'upload' | 'camera' | 'sound';
@@ -43,10 +44,16 @@ export function ColeccionPage() {
   const cameraRef = useRef<HTMLInputElement>(null);
   const soundRef = useRef<HTMLInputElement>(null);
   const { progress, isSpeciesDiscovered, discoverSpecies } = useProgress();
+  const { speak } = useAccessibility();
 
   useEffect(() => {
     getDestinos().then(setDestinos);
   }, []);
+
+  useEffect(() => {
+    // Leer el mensaje cuando cambia
+    speak(message, i18n.language);
+  }, [message, i18n.language, speak]);
 
   const destino = destinos[0];
   const allSpecies = useMemo(() => destinos.flatMap((item) => item.especies), [destinos]);

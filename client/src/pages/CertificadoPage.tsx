@@ -8,6 +8,7 @@ import { getDestinos } from '../services/destinoService';
 import type { Destino } from '../types';
 import { getTexto } from '../utils';
 import { useProgress } from '../context/ProgressContext';
+import { useAccessibility } from '../context/AccessibilityContext';
 import { CertificateTemplate } from '../components/CertificateTemplate';
 import { Button } from '../components/ui/Button';
 
@@ -18,10 +19,24 @@ export function CertificadoPage() {
   const { progress, isDestinoCompleted } = useProgress();
   const [destinos, setDestinos] = useState<Destino[]>([]);
   const certRef = useRef<HTMLDivElement>(null);
+  const { speak } = useAccessibility();
 
   useEffect(() => {
     getDestinos().then(setDestinos);
   }, []);
+
+  useEffect(() => {
+    // Leer título y mensaje cuando se carga la página
+    const completedDestinos = destinos.filter((d) => isDestinoCompleted(d));
+    const latestDestino = completedDestinos[completedDestinos.length - 1];
+    
+    if (latestDestino && progress) {
+      const textToSpeak = `${t('title')}. Certificado por explorar ${getTexto(latestDestino.nombre, i18n.language)}.`;
+      speak(textToSpeak, i18n.language);
+    } else {
+      speak(t('notReady'), i18n.language);
+    }
+  }, [destinos, progress, t, i18n.language, speak, isDestinoCompleted]);
 
   const completedDestinos = destinos.filter((d) => isDestinoCompleted(d));
   const latestDestino = completedDestinos[completedDestinos.length - 1];
