@@ -6,63 +6,6 @@ import { getAdminStats, logoutAdmin, updateDestino } from '../../services/adminS
 import { getDestinos } from '../../services/destinoService';
 import type { AdminStats, Destino } from '../../types';
 import { Button } from '../../components/ui/Button';
-import { Card } from '../../components/ui/Card';
-
-// Componente para las tarjetas de estadísticas principales
-interface StatCardProps {
-  icon: React.ReactNode;
-  label: string;
-  value: string | number;
-}
-
-function StatCard({ icon, label, value }: StatCardProps) {
-  return (
-    <Card className="p-6 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-center gap-4">
-        <div className="p-3 bg-emerald-50 rounded-full text-emerald-600">
-          {icon}
-        </div>
-        <div>
-          <p className="text-sm font-medium text-gray-500">{label}</p>
-          <p className="text-3xl font-bold text-gray-900">{value}</p>
-        </div>
-      </div>
-    </Card>
-  );
-}
-
-// Componente para las listas de ránkings
-interface RankingListProps {
-  title: string;
-  icon: React.ReactNode;
-  items: { id: string | number; nombre: string; valor: number }[];
-  valueLabel: string;
-}
-
-function RankingList({ title, icon, items, valueLabel }: RankingListProps) {
-  return (
-    <Card className="p-6 bg-white border border-gray-100 rounded-xl shadow-sm">
-      <h3 className="text-lg font-semibold text-gray-900 mb-5 flex items-center gap-2.5">
-        <span className="text-emerald-600">{icon}</span>
-        {title}
-        <span className="text-xs font-normal text-gray-400 ml-auto">({valueLabel})</span>
-      </h3>
-      <ul className="space-y-4">
-        {items.map((item, index) => (
-          <li key={item.id} className="flex items-center justify-between gap-3 text-sm pb-3 border-b border-gray-50 last:border-b-0 last:pb-0">
-            <div className="flex items-center gap-3 overflow-hidden">
-              <span className="font-mono text-gray-400 w-5 text-right">{index + 1}.</span>
-              <span className="font-medium text-gray-800 truncate" title={item.nombre}>{item.nombre}</span>
-            </div>
-            <span className="text-emerald-700 font-semibold bg-emerald-50 px-3 py-1 rounded-full tabular-nums text-xs">
-              {item.valor.toLocaleString()}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </Card>
-  );
-}
 
 export function AdminDashboardPage() {
   const { t } = useTranslation('admin');
