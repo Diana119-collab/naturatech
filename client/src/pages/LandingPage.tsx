@@ -32,7 +32,7 @@ export function LandingPage() {
       <div className="hero-bleed">
         <section className="hero-section relative overflow-hidden w-full">
         <img
-          src="https://scontent.flim38-1.fna.fbcdn.net/v/t39.30808-6/480829594_1070740818422409_1275393746041873640_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1283&ctp=s2048x1283&_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=7IaQsTn-N9UQ7kNvwHN7_3e&_nc_oc=AdqayzYfzd91u2b20mkl8Zw8bSNXOpq488KWCyhg9i5ykjH5H20SbsjoW20699U_g9U&_nc_zt=23&_nc_ht=scontent.flim38-1.fna&_nc_gid=hXxWELl3bOw3Njg5-MgpzQ&_nc_ss=7b289&oh=00_Af9ndbgLqufXe__uI4i2YJEJRf6zjn-zoJZ3ePLC8QgCAg&oe=6A33AB13"
+          src="/fondo.jpg"
           alt="Naturaleza"
           className="hero-bg absolute inset-0 w-full h-full object-cover"
         />
