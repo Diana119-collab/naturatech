@@ -32,7 +32,7 @@ export function LandingPage() {
       <div className="hero-bleed">
         <section className="hero-section relative overflow-hidden w-full">
         <img
-          src="/fondo.jpg"
+          src="fondo.jpg"
           alt="Naturaleza"
           className="hero-bg absolute inset-0 w-full h-full object-cover"
         />

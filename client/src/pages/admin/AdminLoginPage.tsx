@@ -55,7 +55,7 @@ export function AdminLoginPage() {
 
       <main className="admin-login-hero">
         <img
-          src="/fondo.jpg"
+          src="fondo.jpg"
           alt="Naturaleza"
           className="admin-login-bg"
         />
