@@ -7,33 +7,34 @@ interface ModalProps {
   onClose: () => void;
   title?: string;
   children: ReactNode;
+  variant?: 'default' | 'identify';
 }
 
-export function Modal({ open, onClose, title, children }: ModalProps) {
+export function Modal({ open, onClose, title, children, variant = 'default' }: ModalProps) {
   const { t } = useTranslation('common');
 
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4">
+    <div className={`fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 modal-overlay modal-overlay-${variant}`}>
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} aria-hidden />
       <div
-        className="relative bg-white rounded-[var(--card-radius)] shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-slide-up border border-emerald-50"
+        className={`relative w-full max-h-[90vh] overflow-y-auto animate-slide-up modal-dialog modal-dialog-${variant}`}
         role="dialog"
         aria-modal="true"
         aria-label={title}
       >
-        <div className="sticky top-0 bg-white/95 backdrop-blur-sm border-b border-emerald-100 px-5 py-4 flex items-center justify-between">
-          {title && <h2 className="text-lg font-bold text-emerald-900">{title}</h2>}
+        <div className={`modal-header modal-header-${variant}`}>
+          {title && <h2>{title}</h2>}
           <button
             onClick={onClose}
-            className="p-2 rounded-lg hover:bg-emerald-50 text-emerald-700"
+            className={`modal-close modal-close-${variant}`}
             aria-label={t('actions.close')}
           >
-            <X size={20} />
+            <X size={variant === 'identify' ? 28 : 20} />
           </button>
         </div>
-        <div className="p-5">{children}</div>
+        <div className={`modal-body modal-body-${variant}`}>{children}</div>
       </div>
     </div>
   );

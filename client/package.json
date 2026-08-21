@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tensorflow-models/mobilenet": "^2.1.1",
+    "@tensorflow/tfjs": "^4.22.0",
     "html2canvas": "^1.4.1",
     "i18next": "^25.2.1",
     "jspdf": "^3.0.1",

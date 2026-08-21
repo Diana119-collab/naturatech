@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
-import { TreePine } from 'lucide-react';
+import { TreePine, Home, MapPinned, Camera, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelector } from './LanguageSelector';
 import { ExploradorBadge } from './ExploradorBadge';
@@ -12,6 +12,13 @@ export function Layout() {
   const navLinkClass = (isActive: boolean) =>
     `text-sm font-medium ${isActive ? 'active-nav-link text-white' : 'text-gray-600 hover:text-emerald-700'}`;
 
+  const mobileNavItems = [
+    { to: '/', label: t('pages.start'), icon: Home, end: true },
+    { to: '/destinos', label: t('pages.species'), icon: MapPinned, end: false },
+    { to: '/especies', label: t('pages.identify'), icon: Camera, end: false },
+    { to: '/ia', label: t('pages.ia'), icon: Sparkles, end: false },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-emerald-50 to-teal-50">
       <header className="site-header sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-emerald-100">
@@ -20,6 +27,7 @@ export function Layout() {
             <TreePine className="text-emerald-600" size={28} />
             <span className="font-bold text-xl text-emerald-800 hidden sm:block">NaturaTech</span>
           </Link>
+
           <div className="site-header-center hidden md:flex items-center gap-6">
             <div className="nav-pill">
               <nav className="flex items-center gap-4">
@@ -38,6 +46,7 @@ export function Layout() {
               </nav>
             </div>
           </div>
+
           <div className="site-header-actions flex items-center gap-3">
             <LanguageSelector compact />
             <ExploradorBadge compact />
@@ -49,7 +58,23 @@ export function Layout() {
         <Outlet />
       </main>
 
-      {/* Side and bottom nav removed to keep a consistent top header menu */}
+      <nav className="mobile-bottom-nav md:hidden" aria-label="Navegación principal">
+        <div className="mobile-bottom-inner">
+          {mobileNavItems.map(({ to, label, icon: Icon, end }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              className={({ isActive }) =>
+                `mobile-bottom-item ${isActive || (to === '/destinos' && isDestinosActive) ? 'active' : ''}`
+              }
+            >
+              <Icon size={18} />
+              <span>{label}</span>
+            </NavLink>
+          ))}
+        </div>
+      </nav>
 
       <AccessibilityPanel />
     </div>

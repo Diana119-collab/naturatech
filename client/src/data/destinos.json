@@ -89,6 +89,7 @@
           "en": "Blue Heron",
           "pt": "Garça-Azul"
         },
+        "scientificName": "Egretta thula",
         "imagen": "/garza-azul.jpg",
         "sonido": "garza",
         "habitat": {
@@ -127,6 +128,7 @@
           "en": "Peruvian Pelican",
           "pt": "Pelicano Peruano"
         },
+        "scientificName": "Pelecanus thagus",
         "imagen": "/pelicano-peruano.jpg",
         "silueta": "🐦",
         "sonido": "pelicano",
@@ -166,6 +168,7 @@
           "en": "Guanay cormorant",
           "pt": "Corvo-marinho de Guanay"
         },
+        "scientificName": "Phalacrocorax brasilianus",
         "imagen": "/cormoran-neotropical.jpg",
         "sonido": "cormoran",
         "habitat": {
@@ -204,6 +207,7 @@
           "en": "Peruvian Gull",
           "pt": "Gaivota Peruana"
         },
+        "scientificName": "Larus belcheri",
         "imagen": "/gaviota-peruana.jpg",
         "silueta": "🕊️",
         "sonido": "gaviota",
@@ -243,6 +247,7 @@
           "en": "Semipalmated Plover",
           "pt": "Maçarico-semipalmado"
         },
+        "scientificName": "Charadrius falklandicus",
         "imagen": "/playerito-ala-blanca.jpg",
         "silueta": "🐤",
         "sonido": "playerito",

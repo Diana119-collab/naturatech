@@ -23,6 +23,7 @@ export interface Zona {
 export interface Especie {
   id: string;
   nombre: TraduccionTexto;
+  scientificName?: string;
   imagen: string;
   silueta: string;
   sonido?: string;
