@@ -4,14 +4,13 @@ Plataforma digital de turismo de naturaleza con IA, gamificación, accesibilidad
 
 ## Requisitos
 
-- Node.js 18+
-- npm 9+
+- Node.js 22+
+- npm 10+
 
 ## Instalación
 
 ```bash
-cd client
-npm install
+npm run install:all
 ```
 
 ## Desarrollo
@@ -21,7 +20,8 @@ npm install
 npm run dev
 
 # O desde client/
-cd client && npm run dev
+cd client
+npm run dev
 ```
 
 Abre http://localhost:5173
@@ -29,7 +29,10 @@ Abre http://localhost:5173
 ## Build
 
 ```bash
+# Desde la raíz
 npm run build
+
+# Vista previa de la compilación
 npm run preview
 ```
 
@@ -58,38 +61,55 @@ Destino completo con 3 zonas y 5 especies:
 - Leaflet + OpenStreetMap
 - i18next (ES, EN, PT)
 - LocalStorage (progreso anónimo NT-XXXXX)
-- TensorFlow.js + `@tensorflow-models/mobilenet` para reconocimiento visual
+- TensorFlow.js + modelo aviar especializado preparado para reconocimiento visual
 
 ## Reconocimiento de aves
 
-La identificación por fotografía se ejecuta en el navegador mediante TensorFlow.js y
-`@tensorflow-models/mobilenet` (`mobilenet.load()`). El modelo actual es MobileNet
-preentrenado con ImageNet, por lo que es un clasificador general de imágenes y no un
-modelo especializado exclusivamente en aves.
+La identificación por fotografía se ejecuta en el navegador con TensorFlow.js y el modelo
+especializado ubicado en `client/public/models/birds/`. El modelo actual clasifica seis
+clases: `garza-azul`, `pelicano-peruano`, `cormoran`, `gaviota`, `playerito` y `not_bird`.
+La clase `not_bird` incluye mamíferos, personas, paisajes y objetos para evitar falsos
+positivos como clasificar una jirafa como llama.
 
-El flujo actual es:
+El sistema acepta una identificación únicamente cuando la confianza es de al menos
+`0.45`, la etiqueta corresponde a una clase aviar válida y existe coincidencia con una
+especie registrada en el destino. Si el modelo no carga, se solicita otra imagen y no se
+desbloquea ninguna especie.
 
-1. Se valida que el archivo sea una imagen y se carga el modelo una sola vez.
-2. MobileNet genera hasta cinco predicciones con su probabilidad.
-3. Se normaliza y traduce la etiqueta detectada.
-4. Se comprueba si la etiqueta corresponde a una clase de ave conocida por la aplicación.
-5. Solo se acepta una predicción con confianza mínima de `0.45` y se compara con las
-	especies registradas en el destino.
-6. Una coincidencia válida permite descubrir la especie; los demás casos no modifican
-	el progreso.
+Los artefactos publicados son `model.json`, los archivos `group1-shard*.bin` y
+`labels.json`. Deben conservarse juntos en `client/public/models/birds/`.
 
-El resultado puede tener uno de estos estados:
+### Entrenamiento del modelo
 
-- `bird_identified`: ave identificada y registrada en el destino.
-- `bird_not_registered`: parece un ave, pero no pertenece a las especies configuradas.
-- `not_a_bird`: la clase principal detectada no corresponde a un ave, por ejemplo una
-  jirafa que MobileNet podría clasificar erróneamente como llama.
-- `uncertain`: la predicción parece aviar, pero no alcanza el umbral de confianza.
+El dataset y el pipeline están en `dataset/birds/` y `scripts/train_bird_model.py`.
+Para regenerar el modelo en Windows:
 
-Este filtro evita que cualquier imagen desbloquee una especie, pero no convierte a
-MobileNet en un detector perfecto de aves. Para mejorar la precisión sería necesario
-sustituirlo o complementarlo con un modelo entrenado específicamente con fotografías de
-aves y ejemplos negativos de mamíferos, personas, paisajes y objetos.
+```powershell
+py -3.11 -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-model.txt
+.venv\Scripts\python.exe scripts\train_bird_model.py
+```
+
+El script entrena mediante transferencia de aprendizaje con MobileNetV2, guarda
+`bird_classifier.h5` y exporta automáticamente los archivos que consume el navegador.
+La estructura de imágenes está documentada en `dataset/birds/README.md`.
+
+## Despliegue
+
+El proyecto se publica automáticamente en GitHub Pages mediante
+`.github/workflows/deploy.yml` cada vez que se hace push a `main` o `master`. También se
+puede ejecutar manualmente desde la pestaña **Actions** de GitHub.
+
+Para publicar:
+
+1. Confirma que `npm run build` termina correctamente.
+2. Verifica que `client/public/models/birds/model.json`, `labels.json` y todos los `.bin`
+   estén incluidos en el commit.
+3. Ejecuta `git push origin main` o `git push origin master`.
+4. En el repositorio, habilita GitHub Pages con **GitHub Actions** como fuente.
+
+La aplicación usa rutas relativas mediante Vite (`base: './'`), por lo que los modelos y
+los recursos estáticos funcionan en la URL del proyecto de GitHub Pages.
 
 ## Arquitectura futura
 

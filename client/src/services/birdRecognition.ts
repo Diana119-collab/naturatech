@@ -1,7 +1,6 @@
 import * as tf from '@tensorflow/tfjs';
-import * as mobilenet from '@tensorflow-models/mobilenet';
 import type { Destino, Especie } from '../types';
-import { getTexto } from '../utils';
+import { getPublicAssetUrl, getTexto } from '../utils';
 
 export interface BirdPrediction {
   label: string;
@@ -17,8 +16,13 @@ export interface BirdRecognitionResult {
 }
 
 const MIN_BIRD_CONFIDENCE = 0.45;
+const SPECIALIZED_MODEL_URL = `${getPublicAssetUrl('/models/birds/model.json') ?? '/models/birds/model.json'}?v=2`;
+const SPECIALIZED_LABELS_URL = `${getPublicAssetUrl('/models/birds/labels.json') ?? '/models/birds/labels.json'}?v=2`;
 
-let modelPromise: Promise<mobilenet.MobileNet | null> | null = null;
+type SpecializedModel = { kind: 'specialized'; model: tf.LayersModel; labels: string[] };
+type Classifier = SpecializedModel;
+
+let modelPromise: Promise<Classifier | null> | null = null;
 
 function normalizeText(value: string): string {
   return value
@@ -101,11 +105,13 @@ function translateBirdLabel(label: string, language: string): string {
   return translation ? getTexto(translation, language) : label;
 }
 
-function isLikelyBirdLabel(label: string): boolean {
+function isLikelyBirdLabel(label: string, destino: Destino): boolean {
   const normalizedLabel = normalizeText(label);
+  if (normalizedLabel === 'not_bird' || normalizedLabel === 'no_bird') return false;
   return birdLabelTranslations[normalizedLabel] !== undefined ||
     normalizedLabel.includes('bird') ||
-    normalizedLabel.includes('birdie');
+    normalizedLabel.includes('birdie') ||
+    destino.especies.some((especie) => matchesSpeciesName(label, especie));
 }
 
 function matchesSpeciesName(label: string, especie: Especie): boolean {
@@ -126,15 +132,33 @@ function matchesSpeciesName(label: string, especie: Especie): boolean {
   );
 }
 
-async function loadBirdClassifier(): Promise<mobilenet.MobileNet | null> {
+async function loadBirdClassifier(): Promise<Classifier | null> {
   if (typeof window === 'undefined') return null;
 
   if (!modelPromise) {
     modelPromise = tf
       .ready()
       .then(async () => {
-        const model = await mobilenet.load();
-        return model;
+        try {
+          const [model, labelsResponse] = await Promise.all([
+            tf.loadLayersModel(SPECIALIZED_MODEL_URL),
+            fetch(SPECIALIZED_LABELS_URL),
+          ]);
+          if (!labelsResponse.ok) throw new Error('No se encontró el archivo de etiquetas');
+          const labels = await labelsResponse.json() as unknown;
+          if (!Array.isArray(labels) || labels.some((label) => typeof label !== 'string')) {
+            throw new Error('El archivo de etiquetas no tiene un formato válido');
+          }
+          const outputShape = model.outputs[0]?.shape;
+          const outputClasses = outputShape?.[outputShape.length - 1];
+          if (typeof outputClasses !== 'number' || labels.length !== outputClasses) {
+            throw new Error('El modelo y las etiquetas tienen distinto número de clases');
+          }
+          return { kind: 'specialized' as const, model, labels };
+        } catch {
+          console.error('No se pudo cargar el modelo aviar especializado desde /models/birds/. Verifica model.json, labels.json y sus archivos .bin.');
+          return null;
+        }
       })
       .catch((error) => {
         console.error('No se pudo cargar el modelo de clasificación visual de TensorFlow.js:', error);
@@ -143,6 +167,25 @@ async function loadBirdClassifier(): Promise<mobilenet.MobileNet | null> {
   }
 
   return modelPromise;
+}
+
+async function classifyWithSpecializedModel(
+  classifier: SpecializedModel,
+  image: HTMLImageElement
+): Promise<{ className: string; probability: number }[]> {
+  const inputShape = classifier.model.inputs[0]?.shape;
+  const size = typeof inputShape?.[1] === 'number' ? inputShape[1] : 224;
+  const input = tf.tidy(() => tf.browser.fromPixels(image).resizeBilinear([size, size]).toFloat().expandDims(0));
+  const output = classifier.model.predict(input);
+  const tensor = Array.isArray(output) ? output[0] : output;
+  const probabilities = await tensor.data();
+  input.dispose();
+  tensor.dispose();
+
+  return Array.from(probabilities)
+    .map((probability, index) => ({ className: classifier.labels[index] ?? `class_${index}`, probability }))
+    .sort((a, b) => b.probability - a.probability)
+    .slice(0, 5);
 }
 
 function buildSafePrediction(label: string, confidence: number): BirdPrediction {
@@ -169,7 +212,7 @@ export async function classifyBirdImage(file: File, destino: Destino, language: 
       img.src = currentImageUrl;
     });
 
-    const rawPredictions = await model.classify(image, 5);
+    const rawPredictions = await classifyWithSpecializedModel(model, image);
     const predictions = rawPredictions
       .map((item) => {
         const rawLabel = item.className.split(',')[0].trim() || 'bird';
@@ -180,7 +223,7 @@ export async function classifyBirdImage(file: File, destino: Destino, language: 
 
     const rawTopLabel = rawPredictions[0]?.className.split(',')[0].trim() ?? '';
     const topPrediction = predictions[0] ?? null;
-    const isBird = isLikelyBirdLabel(rawTopLabel);
+    const isBird = isLikelyBirdLabel(rawTopLabel, destino);
     const isConfident = Boolean(topPrediction && topPrediction.confidence >= MIN_BIRD_CONFIDENCE);
     const matchedEspecie =
       isBird && isConfident && topPrediction
