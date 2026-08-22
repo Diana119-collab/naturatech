@@ -1,4 +1,4 @@
-import { Accessibility, Volume2, Type, Contrast, MessageCircle } from 'lucide-react';
+import { Accessibility, Volume2, Type, Contrast } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAccessibility } from '../context/AccessibilityContext';
