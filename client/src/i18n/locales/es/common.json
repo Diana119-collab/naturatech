@@ -27,8 +27,7 @@
     "title": "Para Todos",
     "voice": "Lectura por voz",
     "largeText": "Texto grande",
-    "highContrast": "Alto contraste",
-    "simpleLanguage": "Lenguaje simple"
+    "highContrast": "Alto contraste"
   },
   "demo": "Modo demo — datos en local"
 }

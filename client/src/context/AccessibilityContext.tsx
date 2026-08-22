@@ -5,14 +5,12 @@ interface AccessibilitySettings {
   voiceEnabled: boolean;
   largeText: boolean;
   highContrast: boolean;
-  simpleLanguage: boolean;
 }
 
 interface AccessibilityContextValue extends AccessibilitySettings {
   toggleVoice: () => void;
   toggleLargeText: () => void;
   toggleHighContrast: () => void;
-  toggleSimpleLanguage: () => void;
   speak: (text: string, lang: string) => void;
 }
 
@@ -22,7 +20,6 @@ const defaultSettings: AccessibilitySettings = {
   voiceEnabled: false,
   largeText: false,
   highContrast: false,
-  simpleLanguage: false,
 };
 
 const AccessibilityContext = createContext<AccessibilityContextValue | null>(null);
@@ -44,7 +41,6 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement;
     root.dataset.a11yLarge = settings.largeText ? 'true' : 'false';
     root.dataset.a11yContrast = settings.highContrast ? 'true' : 'false';
-    root.dataset.a11ySimple = settings.simpleLanguage ? 'true' : 'false';
   }, [settings]);
 
   const update = (partial: Partial<AccessibilitySettings>) => {
@@ -62,7 +58,6 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
         toggleVoice: () => update({ voiceEnabled: !settings.voiceEnabled }),
         toggleLargeText: () => update({ largeText: !settings.largeText }),
         toggleHighContrast: () => update({ highContrast: !settings.highContrast }),
-        toggleSimpleLanguage: () => update({ simpleLanguage: !settings.simpleLanguage }),
         speak,
       }}
     >

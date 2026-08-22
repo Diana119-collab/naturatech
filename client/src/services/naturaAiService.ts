@@ -5,6 +5,7 @@ interface RespuestaIA {
   respuesta: { es: string; en: string; pt: string };
 }
 
+//Asistente de IA.
 const RESPUESTAS: RespuestaIA[] = [
   {
     keywords: ['garza', 'blanc', 'egret', 'garça', 'pajaro alto'],

@@ -1,5 +1,5 @@
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
-import { TreePine, Home, MapPinned, Camera, Sparkles } from 'lucide-react';
+import { Bird, Home, MapPinned, Camera, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelector } from './LanguageSelector';
 import { ExploradorBadge } from './ExploradorBadge';
@@ -24,7 +24,7 @@ export function Layout() {
       <header className="site-header sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-emerald-100">
         <div className="site-header-inner max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Link to="/" className="site-logo flex items-center gap-2 shrink-0">
-            <TreePine className="text-emerald-600" size={28} />
+            <Bird className="text-emerald-600" size={28} />
             <span className="font-bold text-xl text-emerald-800 hidden sm:block">NaturaTech</span>
           </Link>
 

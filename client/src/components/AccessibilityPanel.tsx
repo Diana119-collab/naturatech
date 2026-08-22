@@ -10,18 +10,15 @@ export function AccessibilityPanel() {
     voiceEnabled,
     largeText,
     highContrast,
-    simpleLanguage,
     toggleVoice,
     toggleLargeText,
     toggleHighContrast,
-    toggleSimpleLanguage,
   } = useAccessibility();
 
   const toggles = [
     { icon: Volume2, label: t('a11y.voice'), active: voiceEnabled, toggle: toggleVoice },
     { icon: Type, label: t('a11y.largeText'), active: largeText, toggle: toggleLargeText },
     { icon: Contrast, label: t('a11y.highContrast'), active: highContrast, toggle: toggleHighContrast },
-    { icon: MessageCircle, label: t('a11y.simpleLanguage'), active: simpleLanguage, toggle: toggleSimpleLanguage },
   ];
 
   return (

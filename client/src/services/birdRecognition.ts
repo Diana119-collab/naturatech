@@ -9,11 +9,14 @@ export interface BirdPrediction {
 }
 
 export interface BirdRecognitionResult {
+  status: 'bird_identified' | 'bird_not_registered' | 'not_a_bird' | 'uncertain';
   topPrediction: BirdPrediction | null;
   predictions: BirdPrediction[];
   matchedEspecie: Especie | null;
   message: string;
 }
+
+const MIN_BIRD_CONFIDENCE = 0.45;
 
 let modelPromise: Promise<mobilenet.MobileNet | null> | null = null;
 
@@ -98,6 +101,13 @@ function translateBirdLabel(label: string, language: string): string {
   return translation ? getTexto(translation, language) : label;
 }
 
+function isLikelyBirdLabel(label: string): boolean {
+  const normalizedLabel = normalizeText(label);
+  return birdLabelTranslations[normalizedLabel] !== undefined ||
+    normalizedLabel.includes('bird') ||
+    normalizedLabel.includes('birdie');
+}
+
 function matchesSpeciesName(label: string, especie: Especie): boolean {
   const normalizedLabel = normalizeText(label);
   const candidateNames = [
@@ -148,13 +158,15 @@ export async function classifyBirdImage(file: File, destino: Destino, language: 
   const model = await loadBirdClassifier();
   if (!model) return null;
 
+  let imageUrl: string | null = null;
   try {
-    const imageUrl = URL.createObjectURL(file);
+    imageUrl = URL.createObjectURL(file);
+    const currentImageUrl = imageUrl;
     const image = await new Promise<HTMLImageElement>((resolve, reject) => {
       const img = new Image();
       img.onload = () => resolve(img);
       img.onerror = () => reject(new Error('No se pudo procesar la imagen'));
-      img.src = imageUrl;
+      img.src = currentImageUrl;
     });
 
     const rawPredictions = await model.classify(image, 5);
@@ -166,34 +178,49 @@ export async function classifyBirdImage(file: File, destino: Destino, language: 
       .filter((item) => item.confidence > 0)
       .slice(0, 5);
 
-    const topPrediction = predictions[0] ?? null;
     const rawTopLabel = rawPredictions[0]?.className.split(',')[0].trim() ?? '';
+    const topPrediction = predictions[0] ?? null;
+    const isBird = isLikelyBirdLabel(rawTopLabel);
+    const isConfident = Boolean(topPrediction && topPrediction.confidence >= MIN_BIRD_CONFIDENCE);
     const matchedEspecie =
-      topPrediction
+      isBird && isConfident && topPrediction
         ? destino.especies.find((especie) => matchesSpeciesName(rawTopLabel, especie)) ?? null
         : null;
 
-    const message = topPrediction
-      ? matchedEspecie
-        ? language === 'en'
-          ? `We identified ${getTexto(matchedEspecie.nombre, language)} with ${(topPrediction.confidence * 100).toFixed(0)}% confidence.`
-          : language === 'pt'
-            ? `Identificamos ${getTexto(matchedEspecie.nombre, language)} com ${(topPrediction.confidence * 100).toFixed(0)}% de confiança.`
-            : `Se identificó ${getTexto(matchedEspecie.nombre, language)} con ${(topPrediction.confidence * 100).toFixed(0)}% de confianza.`
-        : language === 'en'
-          ? `The image probably shows a ${topPrediction.label}. This species is not registered in the Coastal Wetland of La Arenilla.`
-          : language === 'pt'
-            ? `A imagem provavelmente corresponde a ${topPrediction.label}. Esta espécie não está registrada no Pantanal Costeiro de La Arenilla.`
-            : `La imagen corresponde probablemente a un ${topPrediction.label}. Esta especie no está registrada en el Humedal Costero Poza de La Arenilla.`
-      : language === 'en'
-        ? 'No recognizable bird was found in the image. Try another photograph.'
-        : language === 'pt'
-          ? 'Nenhuma ave reconhecível foi encontrada na imagem. Tente outra fotografia.'
-          : 'No se encontró un ave reconocible en la imagen. Intenta subir otra fotografía.';
+    const status = !isBird
+      ? 'not_a_bird'
+      : !isConfident
+        ? 'uncertain'
+        : matchedEspecie
+          ? 'bird_identified'
+          : 'bird_not_registered';
 
-    URL.revokeObjectURL(imageUrl);
+    const message = status === 'bird_identified'
+      ? language === 'en'
+        ? `We identified ${getTexto(matchedEspecie!.nombre, language)} with ${(topPrediction!.confidence * 100).toFixed(0)}% confidence.`
+        : language === 'pt'
+          ? `Identificamos ${getTexto(matchedEspecie!.nombre, language)} com ${(topPrediction!.confidence * 100).toFixed(0)}% de confiança.`
+          : `Se identificó ${getTexto(matchedEspecie!.nombre, language)} con ${(topPrediction!.confidence * 100).toFixed(0)}% de confianza.`
+      : status === 'not_a_bird'
+        ? language === 'en'
+          ? `This image does not appear to contain a bird. The model detected ${topPrediction?.label ?? 'an unrecognized object'}.`
+          : language === 'pt'
+            ? `Esta imagem não parece conter uma ave. Intente novamente.`
+            : `Esta imagen no parece contener un ave. Intentalo nuevamente.`
+        : status === 'uncertain'
+          ? language === 'en'
+            ? 'The result is uncertain. Try a clearer photo showing the whole bird.'
+            : language === 'pt'
+              ? 'O resultado é incerto. Tente uma foto mais nítida mostrando a ave inteira.'
+              : 'El resultado es incierto. Intenta con una foto más clara que muestre el ave completa.'
+          : language === 'en'
+            ? `The image probably shows a ${topPrediction!.label}. This species is not registered in the Coastal Wetland of La Arenilla.`
+            : language === 'pt'
+              ? `A imagem provavelmente corresponde a ${topPrediction!.label}. Esta espécie não está registrada no Pantanal Costeiro de La Arenilla.`
+              : `La imagen corresponde probablemente a un ${topPrediction!.label}. Esta especie no está registrada en el Humedal Costero Poza de La Arenilla.`;
 
     return {
+      status,
       topPrediction,
       predictions,
       matchedEspecie,
@@ -202,5 +229,7 @@ export async function classifyBirdImage(file: File, destino: Destino, language: 
   } catch (error) {
     console.error('Error durante la clasificación de la imagen en TensorFlow.js:', error);
     return null;
+  } finally {
+    if (imageUrl) URL.revokeObjectURL(imageUrl);
   }
 }
