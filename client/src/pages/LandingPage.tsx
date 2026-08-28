@@ -47,6 +47,9 @@ export function LandingPage() {
             </Button>
           </Link>
         </div>
+        <footer className="landing-copyright">
+          © {new Date().getFullYear()} NaturaTech. Todos los derechos reservados.
+        </footer>
         </section>
       </div>
       <section>

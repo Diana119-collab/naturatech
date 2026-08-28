@@ -58,6 +58,12 @@ export function Layout() {
         <Outlet />
       </main>
 
+      {pathname !== '/' && (
+        <footer className="landing-copyright site-copyright-footer">
+          © {new Date().getFullYear()} NaturaTech. Todos los derechos reservados.
+        </footer>
+      )}
+
       <nav className="mobile-bottom-nav md:hidden" aria-label="Navegación principal">
         <div className="mobile-bottom-inner">
           {mobileNavItems.map(({ to, label, icon: Icon, end }) => (

@@ -449,6 +449,8 @@ body { margin: 0; min-height: 100vh; background: var(--bg-1); color: #0f172a; }
 .hero-message { margin:0 0 30px 0; }
 .hero-cta { display:inline-flex; gap:10px; align-items:center; padding:12px 18px; border-radius:999px; background: linear-gradient(90deg, #10b981, #047857); color:white; box-shadow:0 12px 30px rgba(4,120,87,0.18); font-weight:700; }
 .hero-ghost { position:absolute; right:6%; top:20px; font-family: var(--font-serif); font-weight:900; font-size: clamp(5rem, 14vw, 12rem); color: rgba(0,0,0,0.06); pointer-events:none; }
+.landing-copyright { position:absolute; right:0; bottom:0; left:0; z-index:30; padding:10px 16px; background:rgba(236,253,245,0.9); color:#064e3b; text-align:center; font-size:0.875rem; font-weight:600; }
+.site-copyright-footer { position:relative; right:auto; bottom:auto; left:auto; z-index:auto; }
 
 
 /* Accessibility: large text */
