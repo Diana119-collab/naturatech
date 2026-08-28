@@ -44,7 +44,6 @@ npm run preview
 | `/destinos` | Lista de especies |
 | `/especies` | Identifica tu Ave |
 | `/ia` | Asistente AI |
-| `/admin/login` | Panel admin (admin / naturatech2026) |
 
 ## Demo principal: La Arenilla
 
@@ -114,8 +113,3 @@ los recursos estáticos funcionan en la URL del proyecto de GitHub Pages.
 ## Arquitectura futura
 
 Los servicios en `client/src/services/` están preparados para reemplazar mocks por API Express + PostgreSQL.
-
-## Credenciales admin (demo)
-
-- Usuario: `admin`
-- Contraseña: `naturatech2026`
