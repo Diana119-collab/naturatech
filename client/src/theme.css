@@ -316,31 +316,6 @@ html { font-family: var(--nt-font-body); }
     linear-gradient(180deg, rgba(16, 21, 17, 0.55) 0%, rgba(16, 21, 17, 0.05) 30%, rgba(16, 21, 17, 0.35) 65%, var(--nt-bg) 100%);
 }
 
-/* Palabra gigante de fondo */
-.nt-hero-word {
-  position: absolute;
-  z-index: 15;
-  left: 50%;
-  top: 22%;
-  transform: translateX(-50%);
-  margin: 0;
-  font-family: var(--nt-font-display);
-  font-weight: 900;
-  font-size: clamp(3.5rem, 15vw, 15rem);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-  background: linear-gradient(180deg, rgba(216, 240, 75, 0.9), rgba(138, 154, 31, 0.55));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  opacity: 0.75;
-  mix-blend-mode: screen;
-}
-
 .nt-theme .hero-bleed .hero-content {
   justify-content: flex-end;
   padding-top: calc(var(--header-height) + 24px);
@@ -476,7 +451,6 @@ html { font-family: var(--nt-font-body); }
 }
 @media (max-width: 767px) {
   .nt-theme .hero-bleed .hero-content { padding-bottom: 170px; }
-  .nt-hero-word { top: 18%; }
   .nt-scroll-cue { display: none; }
 }
 

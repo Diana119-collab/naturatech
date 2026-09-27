@@ -43,7 +43,6 @@ export function LandingPage() {
           className="hero-bg absolute inset-0 w-full h-full object-cover"
         />
         <div className="hero-overlay absolute inset-0 z-10" />
-        <p className="nt-hero-word" aria-hidden="true">Arenilla</p>
         <div className="hero-content absolute inset-0 flex flex-col justify-center items-start px-6 md:px-16 z-20">
           <p className="nt-hero-kicker">
             <Leaf size={14} /> NaturaTech
