@@ -27,7 +27,7 @@
     "title": "For Everyone",
     "voice": "Voice reading",
     "largeText": "Large text",
-    "highContrast": "High contrast"
+    "highContrast": "Light mode"
   },
   "demo": "Demo mode — local data"
 }

@@ -1,4 +1,4 @@
-import { Accessibility, Volume2, Type, Contrast } from 'lucide-react';
+import { Accessibility, Volume2, Type, Sun } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAccessibility } from '../context/AccessibilityContext';
@@ -18,7 +18,7 @@ export function AccessibilityPanel() {
   const toggles = [
     { icon: Volume2, label: t('a11y.voice'), active: voiceEnabled, toggle: toggleVoice },
     { icon: Type, label: t('a11y.largeText'), active: largeText, toggle: toggleLargeText },
-    { icon: Contrast, label: t('a11y.highContrast'), active: highContrast, toggle: toggleHighContrast },
+    { icon: Sun, label: t('a11y.highContrast'), active: highContrast, toggle: toggleHighContrast },
   ];
 
   return (

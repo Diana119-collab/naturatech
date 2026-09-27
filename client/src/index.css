@@ -462,27 +462,6 @@ html[data-a11y-large="true"] h1 {
   font-size: 2.5rem;
 }
 
-/* Accessibility: high contrast */
-html[data-a11y-contrast="true"] body {
-  background: #000 !important;
-  color: #fff !important;
-}
-
-html[data-a11y-contrast="true"] .bg-white,
-html[data-a11y-contrast="true"] [class*="bg-emerald-50"],
-html[data-a11y-contrast="true"] [class*="bg-gradient"] {
-  background: #111 !important;
-  color: #fff !important;
-}
-
-html[data-a11y-contrast="true"] [class*="text-emerald"],
-html[data-a11y-contrast="true"] [class*="text-gray"] {
-  color: #fff !important;
-}
-
-html[data-a11y-contrast="true"] [class*="border-emerald"] {
-  border-color: #fff !important;
-}
 
 /* Animations */
 @keyframes slide-in {
