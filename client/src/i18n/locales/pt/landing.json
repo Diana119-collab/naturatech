@@ -13,5 +13,13 @@
     "species": "Espécies",
     "identify": "Identifique seu pássaro",
     "ia": "Assistente IA"
+  },
+  "hero": {
+    "featured": "Destaque",
+    "featuredTitle": "Conheça as espécies",
+    "featuredCta": "Explorar agora",
+    "mapEyebrow": "Mapa",
+    "mapTitle": "Onde vive a biodiversidade",
+    "scroll": "Rolar"
   }
 }

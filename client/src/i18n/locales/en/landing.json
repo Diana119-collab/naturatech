@@ -13,5 +13,13 @@
     "species": "Species",
     "identify": "Identify your bird",
     "ia": "AI Assistant"
+  },
+  "hero": {
+    "featured": "Featured",
+    "featuredTitle": "Meet the species",
+    "featuredCta": "Explore now",
+    "mapEyebrow": "Map",
+    "mapTitle": "Where biodiversity lives",
+    "scroll": "Scroll"
   }
 }

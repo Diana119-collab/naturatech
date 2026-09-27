@@ -9,8 +9,7 @@ export function Layout() {
   const { pathname } = useLocation();
   const { t } = useTranslation('landing');
   const isDestinosActive = pathname === '/destinos' || pathname.startsWith('/explorar/') || pathname.startsWith('/ave/');
-  const navLinkClass = (isActive: boolean) =>
-    `text-sm font-medium ${isActive ? 'active-nav-link text-white' : 'text-gray-600 hover:text-emerald-700'}`;
+  const navLinkClass = (isActive: boolean) => (isActive ? 'active-nav-link' : '');
 
   const mobileNavItems = [
     { to: '/', label: t('pages.start'), icon: Home, end: true },
@@ -20,12 +19,14 @@ export function Layout() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-emerald-50 to-teal-50">
-      <header className="site-header sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-emerald-100">
+    <div className="nt-theme min-h-screen flex flex-col">
+      <header className="site-header sticky top-0 z-30">
         <div className="site-header-inner max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Link to="/" className="site-logo flex items-center gap-2 shrink-0">
-            <Bird className="text-emerald-600" size={28} />
-            <span className="font-bold text-xl text-emerald-800 hidden sm:block">NaturaTech</span>
+            <span className="nt-logo-mark" aria-hidden="true">
+              <Bird size={22} />
+            </span>
+            <span className="hidden sm:block">NaturaTech</span>
           </Link>
 
           <div className="site-header-center hidden md:flex items-center gap-6">

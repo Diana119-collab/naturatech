@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ArrowDown, ArrowRight, Leaf } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import { useEffect, useState } from 'react';
 import { getDestinos } from '../services/destinoService';
 import type { Destino } from '../types';
-import { getTexto } from '../utils';
+import { getPublicAssetUrl, getTexto } from '../utils';
 import { useAccessibility } from '../context/AccessibilityContext';
 import 'leaflet/dist/leaflet.css';
 
@@ -27,6 +28,11 @@ export function LandingPage() {
     speak(textToSpeak, i18n.language);
   }, [t, i18n.language, speak]);
 
+  // Resalta la última palabra del título con el color de acento
+  const titleWords = t('title').split(' ');
+  const titleLast = titleWords.pop();
+  const featuredEspecie = destinos[0]?.especies[0];
+
   return (
     <div className="landing-page space-y-8">
       <div className="hero-bleed">
@@ -36,24 +42,54 @@ export function LandingPage() {
           alt="Naturaleza"
           className="hero-bg absolute inset-0 w-full h-full object-cover"
         />
-        <div className="hero-overlay absolute inset-0 bg-gradient-to-b from-emerald-900/10 via-transparent z-10" />
+        <div className="hero-overlay absolute inset-0 z-10" />
+        <p className="nt-hero-word" aria-hidden="true">Arenilla</p>
         <div className="hero-content absolute inset-0 flex flex-col justify-center items-start px-6 md:px-16 z-20">
-          <h1 className="hero-title">{t('title')}</h1>
+          <p className="nt-hero-kicker">
+            <Leaf size={14} /> NaturaTech
+          </p>
+          <h1 className="hero-title">
+            {titleWords.join(' ')} <span className="nt-accent-text">{titleLast}</span>
+          </h1>
           <p className="hero-sub">{t('subtitle')}</p>
-          <p className="hero-message text-emerald-200 max-w-xl">{t('message')}</p>
+          <p className="hero-message max-w-xl">{t('message')}</p>
           <Link to={startExplorationPath}>
             <Button size="lg" variant="amber" className="hero-cta">
               {t('cta')}
+              <ArrowRight size={18} />
             </Button>
           </Link>
         </div>
-        <footer className="landing-copyright">
-          © {new Date().getFullYear()} NaturaTech. Todos los derechos reservados.
-        </footer>
+
+        <Link to="/destinos" className="nt-featured">
+          <p className="nt-featured-label">
+            <Leaf size={14} /> {t('hero.featured')}
+          </p>
+          <div className="nt-featured-body">
+            {featuredEspecie && (
+              <img src={getPublicAssetUrl(featuredEspecie.imagen)} alt="" />
+            )}
+            <div>
+              <p className="nt-featured-title">{t('hero.featuredTitle')}</p>
+              <span className="nt-featured-link">
+                <ArrowRight size={14} /> {t('hero.featuredCta')}
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        <div className="nt-scroll-cue" aria-hidden="true">
+          {t('hero.scroll')}
+          <ArrowDown size={16} />
+        </div>
         </section>
       </div>
       <section>
-        <div className="rounded-2xl overflow-hidden border border-emerald-200 h-[280px]">
+        <div className="nt-section-head">
+          <p className="nt-eyebrow">{t('hero.mapEyebrow')}</p>
+          <h2 className="nt-section-title">{t('hero.mapTitle')}</h2>
+        </div>
+        <div className="nt-map-frame">
           <MapContainer center={[-10, -76]} zoom={5} className="h-full w-full" scrollWheelZoom={false}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {destinos.map((d) => (
@@ -61,7 +97,7 @@ export function LandingPage() {
                 key={d.id}
                 center={[d.ubicacion.lat, d.ubicacion.lng]}
                 radius={10}
-                pathOptions={{ color: '#059669', fillColor: '#10b981', fillOpacity: 0.8 }}
+                pathOptions={{ color: '#c8e632', fillColor: '#c8e632', fillOpacity: 0.85, weight: 3 }}
               >
                 <Popup>{getTexto(d.nombre, i18n.language)}</Popup>
               </CircleMarker>
@@ -69,6 +105,9 @@ export function LandingPage() {
           </MapContainer>
         </div>
       </section>
+      <footer className="landing-copyright site-copyright-footer">
+        © {new Date().getFullYear()} NaturaTech. Todos los derechos reservados.
+      </footer>
     </div>
   );
 }

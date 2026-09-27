@@ -31,7 +31,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`inline-flex items-center justify-center gap-2 font-semibold transition-all transform will-change-transform disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 ${variants[variant]} ${sizes[size]} ${className}`}
+      className={`nt-btn nt-btn-${variant} inline-flex items-center justify-center gap-2 font-semibold transition-all transform will-change-transform disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}
     >
       {children}

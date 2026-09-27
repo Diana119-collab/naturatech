@@ -8,5 +8,13 @@
     "species": "Especies",
     "identify": "Identifica tu ave",
     "ia": "Asistente IA"
+  },
+  "hero": {
+    "featured": "Destacado",
+    "featuredTitle": "Conoce las especies",
+    "featuredCta": "Explorar ahora",
+    "mapEyebrow": "Mapa",
+    "mapTitle": "Dónde vive la biodiversidad",
+    "scroll": "Deslizar"
   }
 }
